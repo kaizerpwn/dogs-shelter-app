@@ -1,0 +1,5 @@
+main widget background color: #f8f3e0
+other widget darker color: #E9E4D4
+primary color: #017f36
+
+1366x768

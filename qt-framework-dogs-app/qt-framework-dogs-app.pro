@@ -13,6 +13,8 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    events.h \
+    images.h \
     mainwindow.h
 
 FORMS += \

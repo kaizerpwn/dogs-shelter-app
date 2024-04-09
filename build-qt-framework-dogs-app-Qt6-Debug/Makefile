@@ -296,6 +296,7 @@ DIST          = /app/mkspecs/features/spec_pre.prf \
 		/app/mkspecs/features/qt_config.prf \
 		/app/mkspecs/linux-g++/qmake.conf \
 		/app/mkspecs/features/spec_post.prf \
+		../qt-framework-dogs-app/.qmake.stash \
 		/app/mkspecs/features/exclusive_builds.prf \
 		/app/mkspecs/features/toolchain.prf \
 		/app/mkspecs/features/default_pre.prf \
@@ -316,7 +317,9 @@ DIST          = /app/mkspecs/features/spec_pre.prf \
 		/app/mkspecs/features/exceptions.prf \
 		/app/mkspecs/features/yacc.prf \
 		/app/mkspecs/features/lex.prf \
-		../qt-framework-dogs-app/qt-framework-dogs-app.pro ../qt-framework-dogs-app/mainwindow.h ../qt-framework-dogs-app/main.cpp \
+		../qt-framework-dogs-app/qt-framework-dogs-app.pro ../qt-framework-dogs-app/events.h \
+		../qt-framework-dogs-app/images.h \
+		../qt-framework-dogs-app/mainwindow.h ../qt-framework-dogs-app/main.cpp \
 		../qt-framework-dogs-app/mainwindow.cpp
 QMAKE_TARGET  = qt-framework-dogs-app
 DESTDIR       = 
@@ -568,6 +571,7 @@ Makefile: ../qt-framework-dogs-app/qt-framework-dogs-app.pro /app/mkspecs/linux-
 		/app/mkspecs/features/qt_config.prf \
 		/app/mkspecs/linux-g++/qmake.conf \
 		/app/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/app/mkspecs/features/exclusive_builds.prf \
 		/app/mkspecs/features/toolchain.prf \
 		/app/mkspecs/features/default_pre.prf \
@@ -832,6 +836,7 @@ Makefile: ../qt-framework-dogs-app/qt-framework-dogs-app.pro /app/mkspecs/linux-
 /app/mkspecs/features/qt_config.prf:
 /app/mkspecs/linux-g++/qmake.conf:
 /app/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /app/mkspecs/features/exclusive_builds.prf:
 /app/mkspecs/features/toolchain.prf:
 /app/mkspecs/features/default_pre.prf:
@@ -871,7 +876,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /app/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../qt-framework-dogs-app/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../qt-framework-dogs-app/events.h ../qt-framework-dogs-app/images.h ../qt-framework-dogs-app/mainwindow.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../qt-framework-dogs-app/main.cpp ../qt-framework-dogs-app/mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../qt-framework-dogs-app/mainwindow.ui $(DISTDIR)/
 
@@ -1043,6 +1048,7 @@ moc_mainwindow.cpp: ../qt-framework-dogs-app/mainwindow.h \
 		/app/include/QtGui/QTransform \
 		/app/include/QtCore/qnativeinterface.h \
 		/app/include/QtWidgets/qtabwidget.h \
+		/app/include/QtCore/QEvent \
 		moc_predefs.h \
 		/app/libexec/moc
 	/app/libexec/moc $(DEFINES) --include /home/kaizer/Documents/GitHub/dogs-shelter-app/build-qt-framework-dogs-app-Qt6-Debug/moc_predefs.h -I/app/mkspecs/linux-g++ -I/home/kaizer/Documents/GitHub/dogs-shelter-app/qt-framework-dogs-app -I/app/include -I/app/include/QtWidgets -I/app/include/QtGui -I/app/include/QtCore -I. -I/usr/include/c++/11.3.0 -I/usr/include/c++/11.3.0/x86_64-unknown-linux-gnu -I/usr/include/c++/11.3.0/backward -I/usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/include -I/usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../qt-framework-dogs-app/mainwindow.h -o moc_mainwindow.cpp
@@ -1203,6 +1209,7 @@ main.o: ../qt-framework-dogs-app/main.cpp ../qt-framework-dogs-app/mainwindow.h 
 		/app/include/QtGui/QTransform \
 		/app/include/QtCore/qnativeinterface.h \
 		/app/include/QtWidgets/qtabwidget.h \
+		/app/include/QtCore/QEvent \
 		/app/include/QtWidgets/QApplication \
 		/app/include/QtWidgets/qapplication.h \
 		/app/include/QtCore/qcoreapplication.h \
@@ -1361,7 +1368,57 @@ mainwindow.o: ../qt-framework-dogs-app/mainwindow.cpp ../qt-framework-dogs-app/m
 		/app/include/QtGui/QTransform \
 		/app/include/QtCore/qnativeinterface.h \
 		/app/include/QtWidgets/qtabwidget.h \
-		ui_mainwindow.h
+		/app/include/QtCore/QEvent \
+		ui_mainwindow.h \
+		/app/include/QtCore/QVariant \
+		/app/include/QtWidgets/QApplication \
+		/app/include/QtWidgets/qapplication.h \
+		/app/include/QtCore/qcoreapplication.h \
+		/app/include/QtCore/qeventloop.h \
+		/app/include/QtCore/qcoreapplication_platform.h \
+		/app/include/QtCore/qfuture.h \
+		/app/include/QtCore/qfutureinterface.h \
+		/app/include/QtCore/qmutex.h \
+		/app/include/QtCore/qresultstore.h \
+		/app/include/QtCore/qfuture_impl.h \
+		/app/include/QtCore/qthreadpool.h \
+		/app/include/QtCore/qthread.h \
+		/app/include/QtCore/qdeadlinetimer.h \
+		/app/include/QtCore/qelapsedtimer.h \
+		/app/include/QtCore/qrunnable.h \
+		/app/include/QtCore/qexception.h \
+		/app/include/QtCore/qpromise.h \
+		/app/include/QtGui/qguiapplication.h \
+		/app/include/QtGui/qinputmethod.h \
+		/app/include/QtCore/qlocale.h \
+		/app/include/QtGui/qguiapplication_platform.h \
+		/app/include/QtWidgets/QFrame \
+		/app/include/QtWidgets/qframe.h \
+		/app/include/QtWidgets/QHBoxLayout \
+		/app/include/QtWidgets/qboxlayout.h \
+		/app/include/QtWidgets/qlayout.h \
+		/app/include/QtWidgets/qlayoutitem.h \
+		/app/include/QtWidgets/qgridlayout.h \
+		/app/include/QtWidgets/QLabel \
+		/app/include/QtWidgets/qlabel.h \
+		/app/include/QtGui/qpicture.h \
+		/app/include/QtGui/qtextdocument.h \
+		/app/include/QtWidgets/QPushButton \
+		/app/include/QtWidgets/qpushbutton.h \
+		/app/include/QtWidgets/qabstractbutton.h \
+		/app/include/QtWidgets/QWidget \
+		../qt-framework-dogs-app/images.h \
+		/app/include/QtGui/QPixmap \
+		../qt-framework-dogs-app/events.h \
+		/app/include/QtCore/QDir \
+		/app/include/QtCore/qdir.h \
+		/app/include/QtCore/qfile.h \
+		/app/include/QtCore/qfiledevice.h \
+		/app/include/QtCore/qfileinfo.h \
+		/app/include/QtCore/qdatetime.h \
+		/app/include/QtCore/qcalendar.h \
+		/app/include/QtCore/QDebug \
+		/app/include/QtGui/QMouseEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../qt-framework-dogs-app/mainwindow.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

@@ -22,7 +22,8 @@ protected:
     bool eventFilter(QObject* obj, QEvent* event) override;
 
 private slots:
-    void on_exitButton_linkActivated(const QString &link);
+    void on_exitButton_linkActivated();
+    void on_pushButton_2_clicked();
 
 private:
     Ui::MainWindow *ui;

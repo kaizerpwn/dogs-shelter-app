@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Dogs Shelter</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: #F8F3E0;

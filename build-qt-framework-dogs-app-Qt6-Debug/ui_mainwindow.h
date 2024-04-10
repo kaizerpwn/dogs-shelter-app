@@ -186,7 +186,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Dogs Shelter", nullptr));
         navigationMenuLogo->setText(QString());
         pushButton->setText(QCoreApplication::translate("MainWindow", "Doniraj", nullptr));
         homeLabelButton->setText(QCoreApplication::translate("MainWindow", "Po\304\215etna", nullptr));

@@ -52,10 +52,14 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../qt-framework-dogs-app/main.cpp \
-		../qt-framework-dogs-app/mainwindow.cpp moc_mainwindow.cpp
-OBJECTS       = main.o \
+SOURCES       = ../qt-framework-dogs-app/dogslist.cpp \
+		../qt-framework-dogs-app/main.cpp \
+		../qt-framework-dogs-app/mainwindow.cpp moc_dogslist.cpp \
+		moc_mainwindow.cpp
+OBJECTS       = dogslist.o \
+		main.o \
 		mainwindow.o \
+		moc_dogslist.o \
 		moc_mainwindow.o
 DIST          = /app/mkspecs/features/spec_pre.prf \
 		/app/mkspecs/common/unix.conf \
@@ -317,9 +321,11 @@ DIST          = /app/mkspecs/features/spec_pre.prf \
 		/app/mkspecs/features/exceptions.prf \
 		/app/mkspecs/features/yacc.prf \
 		/app/mkspecs/features/lex.prf \
-		../qt-framework-dogs-app/qt-framework-dogs-app.pro ../qt-framework-dogs-app/events.h \
+		../qt-framework-dogs-app/qt-framework-dogs-app.pro ../qt-framework-dogs-app/dogslist.h \
+		../qt-framework-dogs-app/events.h \
 		../qt-framework-dogs-app/images.h \
-		../qt-framework-dogs-app/mainwindow.h ../qt-framework-dogs-app/main.cpp \
+		../qt-framework-dogs-app/mainwindow.h ../qt-framework-dogs-app/dogslist.cpp \
+		../qt-framework-dogs-app/main.cpp \
 		../qt-framework-dogs-app/mainwindow.cpp
 QMAKE_TARGET  = qt-framework-dogs-app
 DESTDIR       = 
@@ -329,7 +335,7 @@ TARGET        = qt-framework-dogs-app
 first: all
 ####### Build rules
 
-qt-framework-dogs-app: ui_mainwindow.h $(OBJECTS)  
+qt-framework-dogs-app: ui_dogslist.h ui_mainwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET)  $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../qt-framework-dogs-app/qt-framework-dogs-app.pro /app/mkspecs/linux-g++/qmake.conf /app/mkspecs/features/spec_pre.prf \
@@ -876,9 +882,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /app/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../qt-framework-dogs-app/events.h ../qt-framework-dogs-app/images.h ../qt-framework-dogs-app/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../qt-framework-dogs-app/main.cpp ../qt-framework-dogs-app/mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../qt-framework-dogs-app/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../qt-framework-dogs-app/dogslist.h ../qt-framework-dogs-app/events.h ../qt-framework-dogs-app/images.h ../qt-framework-dogs-app/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../qt-framework-dogs-app/dogslist.cpp ../qt-framework-dogs-app/main.cpp ../qt-framework-dogs-app/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../qt-framework-dogs-app/dogslist.ui ../qt-framework-dogs-app/mainwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -910,9 +916,148 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /app/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++1z -Wall -Wextra -dM -E -o moc_predefs.h /app/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_dogslist.cpp moc_mainwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_dogslist.cpp moc_mainwindow.cpp
+moc_dogslist.cpp: ../qt-framework-dogs-app/dogslist.h \
+		/app/include/QtWidgets/QMainWindow \
+		/app/include/QtWidgets/qmainwindow.h \
+		/app/include/QtWidgets/qtwidgetsglobal.h \
+		/app/include/QtGui/qtguiglobal.h \
+		/app/include/QtCore/qglobal.h \
+		/app/include/QtCore/qconfig-bootstrapped.h \
+		/app/include/QtCore/qconfig.h \
+		/app/include/QtCore/qtcore-config.h \
+		/app/include/QtCore/qtcoreexports.h \
+		/app/include/QtCore/qsystemdetection.h \
+		/app/include/QtCore/qprocessordetection.h \
+		/app/include/QtCore/qcompilerdetection.h \
+		/app/include/QtCore/qtypeinfo.h \
+		/app/include/QtCore/qcontainerfwd.h \
+		/app/include/QtCore/qsysinfo.h \
+		/app/include/QtCore/qlogging.h \
+		/app/include/QtCore/qflags.h \
+		/app/include/QtCore/qcompare_impl.h \
+		/app/include/QtCore/qatomic.h \
+		/app/include/QtCore/qbasicatomic.h \
+		/app/include/QtCore/qatomic_bootstrap.h \
+		/app/include/QtCore/qgenericatomic.h \
+		/app/include/QtCore/qatomic_cxx11.h \
+		/app/include/QtCore/qglobalstatic.h \
+		/app/include/QtCore/qnumeric.h \
+		/app/include/QtCore/qversiontagging.h \
+		/app/include/QtGui/qtgui-config.h \
+		/app/include/QtGui/qtguiexports.h \
+		/app/include/QtWidgets/qtwidgets-config.h \
+		/app/include/QtWidgets/qtwidgetsexports.h \
+		/app/include/QtWidgets/qwidget.h \
+		/app/include/QtGui/qwindowdefs.h \
+		/app/include/QtCore/qobjectdefs.h \
+		/app/include/QtCore/qnamespace.h \
+		/app/include/QtCore/qtmetamacros.h \
+		/app/include/QtCore/qobjectdefs_impl.h \
+		/app/include/QtGui/qwindowdefs_win.h \
+		/app/include/QtCore/qobject.h \
+		/app/include/QtCore/qstring.h \
+		/app/include/QtCore/qchar.h \
+		/app/include/QtCore/qstringview.h \
+		/app/include/QtCore/qbytearray.h \
+		/app/include/QtCore/qrefcount.h \
+		/app/include/QtCore/qarraydata.h \
+		/app/include/QtCore/qpair.h \
+		/app/include/QtCore/qarraydatapointer.h \
+		/app/include/QtCore/qarraydataops.h \
+		/app/include/QtCore/qcontainertools_impl.h \
+		/app/include/QtCore/qbytearrayalgorithms.h \
+		/app/include/QtCore/qbytearrayview.h \
+		/app/include/QtCore/qstringliteral.h \
+		/app/include/QtCore/qstringalgorithms.h \
+		/app/include/QtCore/qanystringview.h \
+		/app/include/QtCore/qutf8stringview.h \
+		/app/include/QtCore/qstringtokenizer.h \
+		/app/include/QtCore/qstringbuilder.h \
+		/app/include/QtCore/qlist.h \
+		/app/include/QtCore/qhashfunctions.h \
+		/app/include/QtCore/qiterator.h \
+		/app/include/QtCore/qbytearraylist.h \
+		/app/include/QtCore/qstringlist.h \
+		/app/include/QtCore/qalgorithms.h \
+		/app/include/QtCore/qstringmatcher.h \
+		/app/include/QtCore/qcoreevent.h \
+		/app/include/QtCore/qscopedpointer.h \
+		/app/include/QtCore/qmetatype.h \
+		/app/include/QtCore/qcompare.h \
+		/app/include/QtCore/qvarlengtharray.h \
+		/app/include/QtCore/qscopeguard.h \
+		/app/include/QtCore/qdatastream.h \
+		/app/include/QtCore/qiodevicebase.h \
+		/app/include/QtCore/qiterable.h \
+		/app/include/QtCore/qmetacontainer.h \
+		/app/include/QtCore/qcontainerinfo.h \
+		/app/include/QtCore/qtaggedpointer.h \
+		/app/include/QtCore/qmath.h \
+		/app/include/QtCore/qobject_impl.h \
+		/app/include/QtCore/qbindingstorage.h \
+		/app/include/QtCore/qmargins.h \
+		/app/include/QtGui/qaction.h \
+		/app/include/QtGui/qkeysequence.h \
+		/app/include/QtGui/qicon.h \
+		/app/include/QtCore/qsize.h \
+		/app/include/QtGui/qpixmap.h \
+		/app/include/QtGui/qpaintdevice.h \
+		/app/include/QtCore/qrect.h \
+		/app/include/QtCore/qpoint.h \
+		/app/include/QtGui/qcolor.h \
+		/app/include/QtGui/qrgb.h \
+		/app/include/QtGui/qrgba64.h \
+		/app/include/QtCore/qsharedpointer.h \
+		/app/include/QtCore/qshareddata.h \
+		/app/include/QtCore/qsharedpointer_impl.h \
+		/app/include/QtGui/qimage.h \
+		/app/include/QtGui/qpixelformat.h \
+		/app/include/QtGui/qtransform.h \
+		/app/include/QtGui/qpolygon.h \
+		/app/include/QtGui/qregion.h \
+		/app/include/QtCore/qline.h \
+		/app/include/QtCore/qvariant.h \
+		/app/include/QtCore/qmap.h \
+		/app/include/QtCore/qshareddata_impl.h \
+		/app/include/QtCore/qhash.h \
+		/app/include/QtCore/qdebug.h \
+		/app/include/QtCore/qtextstream.h \
+		/app/include/QtCore/qstringconverter.h \
+		/app/include/QtCore/qset.h \
+		/app/include/QtCore/qcontiguouscache.h \
+		/app/include/QtGui/qpalette.h \
+		/app/include/QtGui/qbrush.h \
+		/app/include/QtGui/qfont.h \
+		/app/include/QtGui/qfontmetrics.h \
+		/app/include/QtGui/qfontinfo.h \
+		/app/include/QtWidgets/qsizepolicy.h \
+		/app/include/QtGui/qcursor.h \
+		/app/include/QtGui/qbitmap.h \
+		/app/include/QtGui/qevent.h \
+		/app/include/QtCore/qiodevice.h \
+		/app/include/QtCore/qpointer.h \
+		/app/include/QtCore/qurl.h \
+		/app/include/QtGui/qeventpoint.h \
+		/app/include/QtGui/qvector2d.h \
+		/app/include/QtGui/qvectornd.h \
+		/app/include/QtGui/qpointingdevice.h \
+		/app/include/QtGui/qinputdevice.h \
+		/app/include/QtGui/qscreen.h \
+		/app/include/QtCore/QList \
+		/app/include/QtCore/QObject \
+		/app/include/QtCore/QRect \
+		/app/include/QtCore/QSize \
+		/app/include/QtCore/QSizeF \
+		/app/include/QtGui/QTransform \
+		/app/include/QtCore/qnativeinterface.h \
+		/app/include/QtWidgets/qtabwidget.h \
+		moc_predefs.h \
+		/app/libexec/moc
+	/app/libexec/moc $(DEFINES) --include /home/kaizer/Documents/GitHub/dogs-shelter-app/build-qt-framework-dogs-app-Qt6-Debug/moc_predefs.h -I/app/mkspecs/linux-g++ -I/home/kaizer/Documents/GitHub/dogs-shelter-app/qt-framework-dogs-app -I/app/include -I/app/include/QtWidgets -I/app/include/QtGui -I/app/include/QtCore -I. -I/usr/include/c++/11.3.0 -I/usr/include/c++/11.3.0/x86_64-unknown-linux-gnu -I/usr/include/c++/11.3.0/backward -I/usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/include -I/usr/lib/gcc/x86_64-unknown-linux-gnu/11.3.0/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../qt-framework-dogs-app/dogslist.h -o moc_dogslist.cpp
+
 moc_mainwindow.cpp: ../qt-framework-dogs-app/mainwindow.h \
 		/app/include/QtWidgets/QMainWindow \
 		/app/include/QtWidgets/qmainwindow.h \
@@ -1057,9 +1202,13 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_dogslist.h ui_mainwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_dogslist.h ui_mainwindow.h
+ui_dogslist.h: ../qt-framework-dogs-app/dogslist.ui \
+		/app/libexec/uic
+	/app/libexec/uic ../qt-framework-dogs-app/dogslist.ui -o ui_dogslist.h
+
 ui_mainwindow.h: ../qt-framework-dogs-app/mainwindow.ui \
 		/app/libexec/uic
 	/app/libexec/uic ../qt-framework-dogs-app/mainwindow.ui -o ui_mainwindow.h
@@ -1073,6 +1222,144 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+dogslist.o: ../qt-framework-dogs-app/dogslist.cpp ../qt-framework-dogs-app/dogslist.h \
+		/app/include/QtWidgets/QMainWindow \
+		/app/include/QtWidgets/qmainwindow.h \
+		/app/include/QtWidgets/qtwidgetsglobal.h \
+		/app/include/QtGui/qtguiglobal.h \
+		/app/include/QtCore/qglobal.h \
+		/app/include/QtCore/qconfig-bootstrapped.h \
+		/app/include/QtCore/qconfig.h \
+		/app/include/QtCore/qtcore-config.h \
+		/app/include/QtCore/qtcoreexports.h \
+		/app/include/QtCore/qsystemdetection.h \
+		/app/include/QtCore/qprocessordetection.h \
+		/app/include/QtCore/qcompilerdetection.h \
+		/app/include/QtCore/qtypeinfo.h \
+		/app/include/QtCore/qcontainerfwd.h \
+		/app/include/QtCore/qsysinfo.h \
+		/app/include/QtCore/qlogging.h \
+		/app/include/QtCore/qflags.h \
+		/app/include/QtCore/qcompare_impl.h \
+		/app/include/QtCore/qatomic.h \
+		/app/include/QtCore/qbasicatomic.h \
+		/app/include/QtCore/qatomic_bootstrap.h \
+		/app/include/QtCore/qgenericatomic.h \
+		/app/include/QtCore/qatomic_cxx11.h \
+		/app/include/QtCore/qglobalstatic.h \
+		/app/include/QtCore/qnumeric.h \
+		/app/include/QtCore/qversiontagging.h \
+		/app/include/QtGui/qtgui-config.h \
+		/app/include/QtGui/qtguiexports.h \
+		/app/include/QtWidgets/qtwidgets-config.h \
+		/app/include/QtWidgets/qtwidgetsexports.h \
+		/app/include/QtWidgets/qwidget.h \
+		/app/include/QtGui/qwindowdefs.h \
+		/app/include/QtCore/qobjectdefs.h \
+		/app/include/QtCore/qnamespace.h \
+		/app/include/QtCore/qtmetamacros.h \
+		/app/include/QtCore/qobjectdefs_impl.h \
+		/app/include/QtGui/qwindowdefs_win.h \
+		/app/include/QtCore/qobject.h \
+		/app/include/QtCore/qstring.h \
+		/app/include/QtCore/qchar.h \
+		/app/include/QtCore/qstringview.h \
+		/app/include/QtCore/qbytearray.h \
+		/app/include/QtCore/qrefcount.h \
+		/app/include/QtCore/qarraydata.h \
+		/app/include/QtCore/qpair.h \
+		/app/include/QtCore/qarraydatapointer.h \
+		/app/include/QtCore/qarraydataops.h \
+		/app/include/QtCore/qcontainertools_impl.h \
+		/app/include/QtCore/qbytearrayalgorithms.h \
+		/app/include/QtCore/qbytearrayview.h \
+		/app/include/QtCore/qstringliteral.h \
+		/app/include/QtCore/qstringalgorithms.h \
+		/app/include/QtCore/qanystringview.h \
+		/app/include/QtCore/qutf8stringview.h \
+		/app/include/QtCore/qstringtokenizer.h \
+		/app/include/QtCore/qstringbuilder.h \
+		/app/include/QtCore/qlist.h \
+		/app/include/QtCore/qhashfunctions.h \
+		/app/include/QtCore/qiterator.h \
+		/app/include/QtCore/qbytearraylist.h \
+		/app/include/QtCore/qstringlist.h \
+		/app/include/QtCore/qalgorithms.h \
+		/app/include/QtCore/qstringmatcher.h \
+		/app/include/QtCore/qcoreevent.h \
+		/app/include/QtCore/qscopedpointer.h \
+		/app/include/QtCore/qmetatype.h \
+		/app/include/QtCore/qcompare.h \
+		/app/include/QtCore/qvarlengtharray.h \
+		/app/include/QtCore/qscopeguard.h \
+		/app/include/QtCore/qdatastream.h \
+		/app/include/QtCore/qiodevicebase.h \
+		/app/include/QtCore/qiterable.h \
+		/app/include/QtCore/qmetacontainer.h \
+		/app/include/QtCore/qcontainerinfo.h \
+		/app/include/QtCore/qtaggedpointer.h \
+		/app/include/QtCore/qmath.h \
+		/app/include/QtCore/qobject_impl.h \
+		/app/include/QtCore/qbindingstorage.h \
+		/app/include/QtCore/qmargins.h \
+		/app/include/QtGui/qaction.h \
+		/app/include/QtGui/qkeysequence.h \
+		/app/include/QtGui/qicon.h \
+		/app/include/QtCore/qsize.h \
+		/app/include/QtGui/qpixmap.h \
+		/app/include/QtGui/qpaintdevice.h \
+		/app/include/QtCore/qrect.h \
+		/app/include/QtCore/qpoint.h \
+		/app/include/QtGui/qcolor.h \
+		/app/include/QtGui/qrgb.h \
+		/app/include/QtGui/qrgba64.h \
+		/app/include/QtCore/qsharedpointer.h \
+		/app/include/QtCore/qshareddata.h \
+		/app/include/QtCore/qsharedpointer_impl.h \
+		/app/include/QtGui/qimage.h \
+		/app/include/QtGui/qpixelformat.h \
+		/app/include/QtGui/qtransform.h \
+		/app/include/QtGui/qpolygon.h \
+		/app/include/QtGui/qregion.h \
+		/app/include/QtCore/qline.h \
+		/app/include/QtCore/qvariant.h \
+		/app/include/QtCore/qmap.h \
+		/app/include/QtCore/qshareddata_impl.h \
+		/app/include/QtCore/qhash.h \
+		/app/include/QtCore/qdebug.h \
+		/app/include/QtCore/qtextstream.h \
+		/app/include/QtCore/qstringconverter.h \
+		/app/include/QtCore/qset.h \
+		/app/include/QtCore/qcontiguouscache.h \
+		/app/include/QtGui/qpalette.h \
+		/app/include/QtGui/qbrush.h \
+		/app/include/QtGui/qfont.h \
+		/app/include/QtGui/qfontmetrics.h \
+		/app/include/QtGui/qfontinfo.h \
+		/app/include/QtWidgets/qsizepolicy.h \
+		/app/include/QtGui/qcursor.h \
+		/app/include/QtGui/qbitmap.h \
+		/app/include/QtGui/qevent.h \
+		/app/include/QtCore/qiodevice.h \
+		/app/include/QtCore/qpointer.h \
+		/app/include/QtCore/qurl.h \
+		/app/include/QtGui/qeventpoint.h \
+		/app/include/QtGui/qvector2d.h \
+		/app/include/QtGui/qvectornd.h \
+		/app/include/QtGui/qpointingdevice.h \
+		/app/include/QtGui/qinputdevice.h \
+		/app/include/QtGui/qscreen.h \
+		/app/include/QtCore/QList \
+		/app/include/QtCore/QObject \
+		/app/include/QtCore/QRect \
+		/app/include/QtCore/QSize \
+		/app/include/QtCore/QSizeF \
+		/app/include/QtGui/QTransform \
+		/app/include/QtCore/qnativeinterface.h \
+		/app/include/QtWidgets/qtabwidget.h \
+		ui_dogslist.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dogslist.o ../qt-framework-dogs-app/dogslist.cpp
 
 main.o: ../qt-framework-dogs-app/main.cpp ../qt-framework-dogs-app/mainwindow.h \
 		/app/include/QtWidgets/QMainWindow \
@@ -1230,7 +1517,9 @@ main.o: ../qt-framework-dogs-app/main.cpp ../qt-framework-dogs-app/mainwindow.h 
 		/app/include/QtGui/qguiapplication.h \
 		/app/include/QtGui/qinputmethod.h \
 		/app/include/QtCore/qlocale.h \
-		/app/include/QtGui/qguiapplication_platform.h
+		/app/include/QtGui/qguiapplication_platform.h \
+		/app/include/QtWidgets/QWidget \
+		/app/include/QtGui/QScreen
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../qt-framework-dogs-app/main.cpp
 
 mainwindow.o: ../qt-framework-dogs-app/mainwindow.cpp ../qt-framework-dogs-app/mainwindow.h \
@@ -1410,6 +1699,7 @@ mainwindow.o: ../qt-framework-dogs-app/mainwindow.cpp ../qt-framework-dogs-app/m
 		../qt-framework-dogs-app/images.h \
 		/app/include/QtGui/QPixmap \
 		../qt-framework-dogs-app/events.h \
+		/app/include/QtGui/QMouseEvent \
 		/app/include/QtCore/QDir \
 		/app/include/QtCore/qdir.h \
 		/app/include/QtCore/qfile.h \
@@ -1417,9 +1707,11 @@ mainwindow.o: ../qt-framework-dogs-app/mainwindow.cpp ../qt-framework-dogs-app/m
 		/app/include/QtCore/qfileinfo.h \
 		/app/include/QtCore/qdatetime.h \
 		/app/include/QtCore/qcalendar.h \
-		/app/include/QtCore/QDebug \
-		/app/include/QtGui/QMouseEvent
+		/app/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../qt-framework-dogs-app/mainwindow.cpp
+
+moc_dogslist.o: moc_dogslist.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dogslist.o moc_dogslist.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

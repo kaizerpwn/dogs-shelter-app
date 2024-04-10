@@ -8,18 +8,7 @@ bool MainWindow::eventFilter(QObject* obj, QEvent* event) {
         if (event->type() == QEvent::MouseButtonPress) {
             QMouseEvent* mouseEvent = dynamic_cast<QMouseEvent*>(event);
             if (mouseEvent && mouseEvent->button() == Qt::LeftButton) {
-                close();
-                return true;
-            }
-        }
-    }
-
-    if (obj == ui->homeLabelButton) {
-        if (event->type() == QEvent::MouseButtonPress) {
-            QMouseEvent* mouseEvent = dynamic_cast<QMouseEvent*>(event);
-            if (mouseEvent && mouseEvent->button() == Qt::LeftButton) {
-                MainWindow::hide();
-                MainWindow::show();
+                QCoreApplication::quit();
                 return true;
             }
         }

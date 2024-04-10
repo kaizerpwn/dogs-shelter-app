@@ -2,8 +2,8 @@
 #include "ui_mainwindow.h"
 #include "images.h"
 #include "events.h"
+#include "dogslist.h"
 
-#include <QDir>
 #include <QDebug>
 #include <QLabel>
 
@@ -22,8 +22,16 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_exitButton_linkActivated(const QString &link)
+void MainWindow::on_exitButton_linkActivated()
 {
-    close();
+    this->close();
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    DogsList *dogsListForm = new DogsList(this);
+    dogsListForm->setWindowFlags(Qt::FramelessWindowHint);
+    dogsListForm->show();
 }
 

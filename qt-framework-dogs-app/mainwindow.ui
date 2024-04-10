@@ -68,6 +68,9 @@ border-radius: 20px;</string>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: #017F36; 
 height: 120px;
@@ -80,7 +83,7 @@ color: #fff;</string>
       <string>Doniraj</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>450</x>
@@ -95,6 +98,9 @@ color: #fff;</string>
       </property>
       <item>
        <widget class="QLabel" name="homeLabelButton">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
          <string notr="true">color: #017F36;
 font-size: 22px;
@@ -107,6 +113,9 @@ font-family: Montserrat;</string>
       </item>
       <item>
        <widget class="QLabel" name="aboutUsLabelButton">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
          <string notr="true">color: #017F36;
 font-size: 22px;
@@ -119,6 +128,9 @@ font-family: Montserrat;</string>
       </item>
       <item>
        <widget class="QLabel" name="contactUsLabelButton">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
          <string notr="true">color: #017F36;
 font-size: 22px;
@@ -238,6 +250,9 @@ prijatelja.</string>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: #017F36; 
 height: 120px;
@@ -262,6 +277,23 @@ color: #fff;
      </property>
      <property name="styleSheet">
       <string notr="true">opacity: 20%;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="rightArrowIcon">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>426</y>
+       <width>30</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">opacity: 20%;
+background-color: transparent;</string>
      </property>
      <property name="text">
       <string/>

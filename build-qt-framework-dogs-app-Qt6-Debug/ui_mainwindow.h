@@ -27,7 +27,7 @@ public:
     QFrame *navigationFrame;
     QLabel *navigationMenuLogo;
     QPushButton *pushButton;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QLabel *homeLabelButton;
     QLabel *aboutUsLabelButton;
@@ -39,6 +39,7 @@ public:
     QLabel *allIcons;
     QPushButton *pushButton_2;
     QLabel *pawIconOnTheEdge;
+    QLabel *rightArrowIcon;
     QLabel *dogHeaderImage;
     QLabel *dogHeaderImageInfo;
     QLabel *pawIconOnTheEdge_2;
@@ -72,36 +73,40 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
         pushButton->setSizePolicy(sizePolicy);
+        pushButton->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton->setStyleSheet(QString::fromUtf8("background-color: #017F36; \n"
 "height: 120px;\n"
 "font-weight:  600;\n"
 "font-family: Montserrat;\n"
 "font-size: 20px;\n"
 "color: #fff;"));
-        widget = new QWidget(navigationFrame);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(450, 20, 341, 37));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(navigationFrame);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(450, 20, 341, 37));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 7, 0, 0);
-        homeLabelButton = new QLabel(widget);
+        homeLabelButton = new QLabel(layoutWidget);
         homeLabelButton->setObjectName(QString::fromUtf8("homeLabelButton"));
+        homeLabelButton->setCursor(QCursor(Qt::PointingHandCursor));
         homeLabelButton->setStyleSheet(QString::fromUtf8("color: #017F36;\n"
 "font-size: 22px;\n"
 "font-family: Montserrat;"));
 
         horizontalLayout->addWidget(homeLabelButton);
 
-        aboutUsLabelButton = new QLabel(widget);
+        aboutUsLabelButton = new QLabel(layoutWidget);
         aboutUsLabelButton->setObjectName(QString::fromUtf8("aboutUsLabelButton"));
+        aboutUsLabelButton->setCursor(QCursor(Qt::PointingHandCursor));
         aboutUsLabelButton->setStyleSheet(QString::fromUtf8("color: #017F36;\n"
 "font-size: 22px;\n"
 "font-family: Montserrat;"));
 
         horizontalLayout->addWidget(aboutUsLabelButton);
 
-        contactUsLabelButton = new QLabel(widget);
+        contactUsLabelButton = new QLabel(layoutWidget);
         contactUsLabelButton->setObjectName(QString::fromUtf8("contactUsLabelButton"));
+        contactUsLabelButton->setCursor(QCursor(Qt::PointingHandCursor));
         contactUsLabelButton->setStyleSheet(QString::fromUtf8("color: #017F36;\n"
 "font-size: 22px;\n"
 "font-family: Montserrat;"));
@@ -144,6 +149,7 @@ public:
         pushButton_2->setGeometry(QRect(520, 410, 252, 59));
         sizePolicy.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
         pushButton_2->setSizePolicy(sizePolicy);
+        pushButton_2->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_2->setStyleSheet(QString::fromUtf8("background-color: #017F36; \n"
 "height: 120px;\n"
 "font-weight:  600;\n"
@@ -155,6 +161,11 @@ public:
         pawIconOnTheEdge->setObjectName(QString::fromUtf8("pawIconOnTheEdge"));
         pawIconOnTheEdge->setGeometry(QRect(680, 10, 132, 141));
         pawIconOnTheEdge->setStyleSheet(QString::fromUtf8("opacity: 20%;"));
+        rightArrowIcon = new QLabel(headerFrame);
+        rightArrowIcon->setObjectName(QString::fromUtf8("rightArrowIcon"));
+        rightArrowIcon->setGeometry(QRect(730, 426, 30, 30));
+        rightArrowIcon->setStyleSheet(QString::fromUtf8("opacity: 20%;\n"
+"background-color: transparent;"));
         dogHeaderImage = new QLabel(centralwidget);
         dogHeaderImage->setObjectName(QString::fromUtf8("dogHeaderImage"));
         dogHeaderImage->setGeometry(QRect(38, 170, 457, 643));
@@ -200,6 +211,7 @@ public:
         allIcons->setText(QString());
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "Pogledaj pse", nullptr));
         pawIconOnTheEdge->setText(QString());
+        rightArrowIcon->setText(QString());
         dogHeaderImage->setText(QString());
         dogHeaderImageInfo->setText(QString());
         pawIconOnTheEdge_2->setText(QString());

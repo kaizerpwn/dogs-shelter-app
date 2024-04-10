@@ -67,6 +67,9 @@ border-radius: 20px;</string>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: #017F36; 
 height: 120px;
@@ -94,6 +97,9 @@ color: #fff;</string>
       </property>
       <item>
        <widget class="QLabel" name="homeLabelButton">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
          <string notr="true">color: #017F36;
 font-size: 22px;
@@ -106,6 +112,9 @@ font-family: Montserrat;</string>
       </item>
       <item>
        <widget class="QLabel" name="aboutUsLabelButton">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
          <string notr="true">color: #017F36;
 font-size: 22px;
@@ -118,6 +127,9 @@ font-family: Montserrat;</string>
       </item>
       <item>
        <widget class="QLabel" name="contactUsLabelButton">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
          <string notr="true">color: #017F36;
 font-size: 22px;
@@ -213,6 +225,9 @@ font-size: 16px;</string>
       <horstretch>0</horstretch>
       <verstretch>0</verstretch>
      </sizepolicy>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: #017F36; 

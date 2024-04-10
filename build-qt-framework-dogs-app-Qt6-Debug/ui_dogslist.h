@@ -65,6 +65,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
         pushButton->setSizePolicy(sizePolicy);
+        pushButton->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton->setStyleSheet(QString::fromUtf8("background-color: #017F36; \n"
 "height: 120px;\n"
 "font-weight:  600;\n"
@@ -79,6 +80,7 @@ public:
         horizontalLayout->setContentsMargins(0, 7, 0, 0);
         homeLabelButton = new QLabel(layoutWidget);
         homeLabelButton->setObjectName(QString::fromUtf8("homeLabelButton"));
+        homeLabelButton->setCursor(QCursor(Qt::PointingHandCursor));
         homeLabelButton->setStyleSheet(QString::fromUtf8("color: #017F36;\n"
 "font-size: 22px;\n"
 "font-family: Montserrat;"));
@@ -87,6 +89,7 @@ public:
 
         aboutUsLabelButton = new QLabel(layoutWidget);
         aboutUsLabelButton->setObjectName(QString::fromUtf8("aboutUsLabelButton"));
+        aboutUsLabelButton->setCursor(QCursor(Qt::PointingHandCursor));
         aboutUsLabelButton->setStyleSheet(QString::fromUtf8("color: #017F36;\n"
 "font-size: 22px;\n"
 "font-family: Montserrat;"));
@@ -95,6 +98,7 @@ public:
 
         contactUsLabelButton = new QLabel(layoutWidget);
         contactUsLabelButton->setObjectName(QString::fromUtf8("contactUsLabelButton"));
+        contactUsLabelButton->setCursor(QCursor(Qt::PointingHandCursor));
         contactUsLabelButton->setStyleSheet(QString::fromUtf8("color: #017F36;\n"
 "font-size: 22px;\n"
 "font-family: Montserrat;"));
@@ -128,6 +132,7 @@ public:
         exportButton->setGeometry(QRect(1067, 170, 150, 45));
         sizePolicy.setHeightForWidth(exportButton->sizePolicy().hasHeightForWidth());
         exportButton->setSizePolicy(sizePolicy);
+        exportButton->setCursor(QCursor(Qt::PointingHandCursor));
         exportButton->setStyleSheet(QString::fromUtf8("background-color: #017F36; \n"
 "height: 120px;\n"
 "font-weight:  bold;\n"

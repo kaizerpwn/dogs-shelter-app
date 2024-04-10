@@ -23,6 +23,9 @@ void initializeImages(Ui::MainWindow *ui)
 
     QPixmap exitButtonImage("../resources/images/exit.png");
     ui->exitButton->setPixmap(exitButtonImage);
+
+    QPixmap rightArrowIconImage("../resources/images/right-arrow.png");
+    ui->rightArrowIcon->setPixmap(rightArrowIconImage);
 }
 
 #endif

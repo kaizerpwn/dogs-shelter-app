@@ -113,6 +113,7 @@ public:
         exitButton = new QLabel(centralwidget);
         exitButton->setObjectName(QString::fromUtf8("exitButton"));
         exitButton->setGeometry(QRect(1310, 20, 51, 41));
+        exitButton->setCursor(QCursor(Qt::PointingHandCursor));
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(65, 160, 231, 31));

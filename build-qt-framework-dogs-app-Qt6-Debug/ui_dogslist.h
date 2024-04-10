@@ -34,6 +34,9 @@ public:
     QLabel *contactUsLabelButton;
     QLabel *pawIconOnTheEdge_2;
     QLabel *exitButton;
+    QLabel *label;
+    QLabel *label_2;
+    QPushButton *exportButton;
 
     void setupUi(QMainWindow *DogsList)
     {
@@ -106,6 +109,31 @@ public:
         exitButton = new QLabel(centralwidget);
         exitButton->setObjectName(QString::fromUtf8("exitButton"));
         exitButton->setGeometry(QRect(1310, 20, 51, 41));
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(65, 160, 231, 31));
+        label->setStyleSheet(QString::fromUtf8("color: #444;\n"
+"font-weight:bold;\n"
+"font-family: Montserrat;\n"
+"font-size: 32px;"));
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(67, 194, 521, 21));
+        label_2->setStyleSheet(QString::fromUtf8("color: #444;\n"
+"font-weight:200;\n"
+"font-family: Montserrat;\n"
+"font-size: 16px;"));
+        exportButton = new QPushButton(centralwidget);
+        exportButton->setObjectName(QString::fromUtf8("exportButton"));
+        exportButton->setGeometry(QRect(1067, 170, 150, 45));
+        sizePolicy.setHeightForWidth(exportButton->sizePolicy().hasHeightForWidth());
+        exportButton->setSizePolicy(sizePolicy);
+        exportButton->setStyleSheet(QString::fromUtf8("background-color: #017F36; \n"
+"height: 120px;\n"
+"font-weight:  bold;\n"
+"font-family: Montserrat;\n"
+"font-size: 20px;\n"
+"color: #fff;"));
         DogsList->setCentralWidget(centralwidget);
 
         retranslateUi(DogsList);
@@ -123,6 +151,9 @@ public:
         contactUsLabelButton->setText(QCoreApplication::translate("DogsList", "Kontakt", nullptr));
         pawIconOnTheEdge_2->setText(QString());
         exitButton->setText(QString());
+        label->setText(QCoreApplication::translate("DogsList", "Dostupni psi", nullptr));
+        label_2->setText(QCoreApplication::translate("DogsList", "Ovdje mo\305\276ete prona\304\207i listu svih pasa spremnih za udomljavanje.", nullptr));
+        exportButton->setText(QCoreApplication::translate("DogsList", "Export", nullptr));
     } // retranslateUi
 
 };

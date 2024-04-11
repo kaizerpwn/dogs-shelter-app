@@ -10,6 +10,7 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
@@ -50,6 +51,9 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(1366, 768);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8("../resources/images/logo-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        MainWindow->setWindowIcon(icon);
         MainWindow->setStyleSheet(QString::fromUtf8("background-color: #F8F3E0;\n"
 "border-radius: 10px;"));
         centralwidget = new QWidget(MainWindow);
@@ -65,6 +69,7 @@ public:
         navigationMenuLogo = new QLabel(navigationFrame);
         navigationMenuLogo->setObjectName(QString::fromUtf8("navigationMenuLogo"));
         navigationMenuLogo->setGeometry(QRect(20, 15, 291, 61));
+        navigationMenuLogo->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton = new QPushButton(navigationFrame);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(960, 18, 150, 45));

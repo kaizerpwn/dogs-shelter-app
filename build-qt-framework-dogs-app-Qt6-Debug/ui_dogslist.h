@@ -10,6 +10,7 @@
 #define UI_DOGSLIST_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
@@ -58,6 +59,9 @@ public:
         if (DogsList->objectName().isEmpty())
             DogsList->setObjectName(QString::fromUtf8("DogsList"));
         DogsList->resize(1366, 768);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8("../resources/images/logo-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        DogsList->setWindowIcon(icon);
         DogsList->setStyleSheet(QString::fromUtf8("background-color: #F8F3E0;"));
         centralwidget = new QWidget(DogsList);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
@@ -72,6 +76,7 @@ public:
         navigationMenuLogo = new QLabel(navigationFrame);
         navigationMenuLogo->setObjectName(QString::fromUtf8("navigationMenuLogo"));
         navigationMenuLogo->setGeometry(QRect(20, 15, 291, 61));
+        navigationMenuLogo->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton = new QPushButton(navigationFrame);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(960, 18, 150, 45));
@@ -157,7 +162,7 @@ public:
 "color: #fff;"));
         widget = new QWidget(centralwidget);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(70, 260, 1141, 511));
+        widget->setGeometry(QRect(70, 240, 1141, 521));
         gridLayout = new QGridLayout(widget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);

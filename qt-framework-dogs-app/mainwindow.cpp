@@ -36,3 +36,13 @@ void MainWindow::on_pushButton_2_clicked()
     dogsListForm->show();
 }
 
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    m_nMouseClick_X_Coordinate = event->position().x();
+    m_nMouseClick_Y_Coordinate = event->position().y();
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    move(event->globalPosition().x() - m_nMouseClick_X_Coordinate, event->globalPosition().y() - m_nMouseClick_Y_Coordinate);
+}

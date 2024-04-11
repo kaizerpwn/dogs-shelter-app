@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Dogs Shelter</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../resources/images/logo-icon.png</normaloff>../resources/images/logo-icon.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">background-color: #F8F3E0;
 border-radius: 10px;</string>
@@ -48,6 +52,9 @@ border-radius: 20px;</string>
        <width>291</width>
        <height>61</height>
       </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="text">
       <string/>

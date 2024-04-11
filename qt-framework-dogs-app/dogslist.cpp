@@ -12,6 +12,7 @@ DogsList::DogsList(QWidget *parent) :
     ui->setupUi(this);
     ui->exitButton->installEventFilter(this);
     ui->homeLabelButton->installEventFilter(this);
+    ui->navigationMenuLogo->installEventFilter(this);
 
     QPixmap exitButtonImage("../resources/images/exit.png");
     ui->exitButton->setPixmap(exitButtonImage);
@@ -34,21 +35,28 @@ DogsList::~DogsList()
     delete ui;
 }
 
-bool DogsList::eventFilter(QObject* obj, QEvent* event) {
-    if (obj == ui->exitButton) {
-        if (event->type() == QEvent::MouseButtonPress) {
+bool DogsList::eventFilter(QObject* obj, QEvent* event)
+{
+    if (obj == ui->exitButton)
+    {
+        if (event->type() == QEvent::MouseButtonPress)
+        {
             QMouseEvent* mouseEvent = dynamic_cast<QMouseEvent*>(event);
-            if (mouseEvent && mouseEvent->button() == Qt::LeftButton) {
+            if (mouseEvent && mouseEvent->button() == Qt::LeftButton)
+            {
                 QCoreApplication::quit();
                 return true;
             }
         }
     }
 
-    if (obj == ui->homeLabelButton) {
-        if (event->type() == QEvent::MouseButtonPress) {
+    if (obj == ui->homeLabelButton || obj == ui->navigationMenuLogo)
+    {
+        if (event->type() == QEvent::MouseButtonPress)
+        {
             QMouseEvent* mouseEvent = dynamic_cast<QMouseEvent*>(event);
-            if (mouseEvent && mouseEvent->button() == Qt::LeftButton) {
+            if (mouseEvent && mouseEvent->button() == Qt::LeftButton)
+            {
                 close();
                 return true;
             }

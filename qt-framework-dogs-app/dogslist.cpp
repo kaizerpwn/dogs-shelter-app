@@ -21,6 +21,12 @@ DogsList::DogsList(QWidget *parent) :
 
     QPixmap pawIconOnTheEdge("../resources/images/background-particle-132x141.png");
     ui->pawIconOnTheEdge_2->setPixmap(pawIconOnTheEdge);
+
+    QPixmap moreInfoIcon("../resources/images/more-info-icon.png");
+    ui->moreInfoIcon_4->setPixmap(moreInfoIcon);
+
+    QPixmap dogImage("../resources/images/dogs/dog-1.png");
+    ui->dogImage_4->setPixmap(dogImage);
 }
 
 DogsList::~DogsList()

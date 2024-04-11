@@ -291,6 +291,9 @@ color: #fff;
        <height>30</height>
       </rect>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">opacity: 20%;
 background-color: transparent;</string>

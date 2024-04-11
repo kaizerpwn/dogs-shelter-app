@@ -12,10 +12,12 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -34,9 +36,22 @@ public:
     QLabel *contactUsLabelButton;
     QLabel *pawIconOnTheEdge_2;
     QLabel *exitButton;
-    QLabel *label;
-    QLabel *label_2;
+    QLabel *dogsListHeaderTitle;
+    QLabel *dogsListHeaderDescription;
     QPushButton *exportButton;
+    QWidget *widget;
+    QGridLayout *gridLayout;
+    QSpacerItem *horizontalSpacer;
+    QFrame *dogOneFrame;
+    QFrame *frame_5;
+    QLabel *dogsAge_7;
+    QLabel *moreInfoIcon_4;
+    QWidget *layoutWidget_4;
+    QHBoxLayout *horizontalLayout_5;
+    QLabel *dogsName_4;
+    QLabel *dogsAge_8;
+    QLabel *dogImage_4;
+    QSpacerItem *verticalSpacer;
 
     void setupUi(QMainWindow *DogsList)
     {
@@ -114,17 +129,17 @@ public:
         exitButton->setObjectName(QString::fromUtf8("exitButton"));
         exitButton->setGeometry(QRect(1310, 20, 51, 41));
         exitButton->setCursor(QCursor(Qt::PointingHandCursor));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(65, 160, 231, 31));
-        label->setStyleSheet(QString::fromUtf8("color: #444;\n"
+        dogsListHeaderTitle = new QLabel(centralwidget);
+        dogsListHeaderTitle->setObjectName(QString::fromUtf8("dogsListHeaderTitle"));
+        dogsListHeaderTitle->setGeometry(QRect(65, 160, 231, 31));
+        dogsListHeaderTitle->setStyleSheet(QString::fromUtf8("color: #444;\n"
 "font-weight:bold;\n"
 "font-family: Montserrat;\n"
 "font-size: 32px;"));
-        label_2 = new QLabel(centralwidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(67, 194, 521, 21));
-        label_2->setStyleSheet(QString::fromUtf8("color: #444;\n"
+        dogsListHeaderDescription = new QLabel(centralwidget);
+        dogsListHeaderDescription->setObjectName(QString::fromUtf8("dogsListHeaderDescription"));
+        dogsListHeaderDescription->setGeometry(QRect(67, 194, 521, 21));
+        dogsListHeaderDescription->setStyleSheet(QString::fromUtf8("color: #444;\n"
 "font-weight:200;\n"
 "font-family: Montserrat;\n"
 "font-size: 16px;"));
@@ -140,6 +155,87 @@ public:
 "font-family: Montserrat;\n"
 "font-size: 20px;\n"
 "color: #fff;"));
+        widget = new QWidget(centralwidget);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(70, 260, 1141, 511));
+        gridLayout = new QGridLayout(widget);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 0, 1, 1, 1);
+
+        dogOneFrame = new QFrame(widget);
+        dogOneFrame->setObjectName(QString::fromUtf8("dogOneFrame"));
+        dogOneFrame->setMinimumSize(QSize(291, 281));
+        dogOneFrame->setMaximumSize(QSize(291, 281));
+        dogOneFrame->setStyleSheet(QString::fromUtf8("background-color: #D9D9D9;\n"
+"border-radius: 20px;"));
+        dogOneFrame->setFrameShape(QFrame::StyledPanel);
+        dogOneFrame->setFrameShadow(QFrame::Raised);
+        frame_5 = new QFrame(dogOneFrame);
+        frame_5->setObjectName(QString::fromUtf8("frame_5"));
+        frame_5->setGeometry(QRect(0, 210, 291, 72));
+        frame_5->setStyleSheet(QString::fromUtf8("background-color: rgba(233,228,212, 0.9); \n"
+"border-top-left-radius: 0px !important;\n"
+"border-top-right-radius: 0px !important;\n"
+"border-bottom-left-radius: 20px !Important; \n"
+"border-bottom-right-radius: 20px !Important; "));
+        frame_5->setFrameShape(QFrame::StyledPanel);
+        frame_5->setFrameShadow(QFrame::Raised);
+        dogsAge_7 = new QLabel(frame_5);
+        dogsAge_7->setObjectName(QString::fromUtf8("dogsAge_7"));
+        dogsAge_7->setGeometry(QRect(30, 40, 191, 16));
+        dogsAge_7->setStyleSheet(QString::fromUtf8("font-size: 14px;\n"
+"color: #444; \n"
+"background-color: transparent;"));
+        moreInfoIcon_4 = new QLabel(frame_5);
+        moreInfoIcon_4->setObjectName(QString::fromUtf8("moreInfoIcon_4"));
+        moreInfoIcon_4->setGeometry(QRect(235, 11, 50, 50));
+        moreInfoIcon_4->setCursor(QCursor(Qt::PointingHandCursor));
+        moreInfoIcon_4->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
+        layoutWidget_4 = new QWidget(frame_5);
+        layoutWidget_4->setObjectName(QString::fromUtf8("layoutWidget_4"));
+        layoutWidget_4->setGeometry(QRect(20, 10, 165, 27));
+        horizontalLayout_5 = new QHBoxLayout(layoutWidget_4);
+        horizontalLayout_5->setSpacing(0);
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        horizontalLayout_5->setContentsMargins(9, 0, 0, 0);
+        dogsName_4 = new QLabel(layoutWidget_4);
+        dogsName_4->setObjectName(QString::fromUtf8("dogsName_4"));
+        dogsName_4->setStyleSheet(QString::fromUtf8("font-size: 22px;\n"
+"color: #017F36;\n"
+"font-weight: bold;\n"
+"background-color: transparent;"));
+
+        horizontalLayout_5->addWidget(dogsName_4);
+
+        dogsAge_8 = new QLabel(layoutWidget_4);
+        dogsAge_8->setObjectName(QString::fromUtf8("dogsAge_8"));
+        dogsAge_8->setStyleSheet(QString::fromUtf8("font-size: 20px;\n"
+"color: #444; \n"
+"background-color: transparent;"));
+
+        horizontalLayout_5->addWidget(dogsAge_8);
+
+        dogImage_4 = new QLabel(dogOneFrame);
+        dogImage_4->setObjectName(QString::fromUtf8("dogImage_4"));
+        dogImage_4->setGeometry(QRect(20, 0, 251, 281));
+        sizePolicy.setHeightForWidth(dogImage_4->sizePolicy().hasHeightForWidth());
+        dogImage_4->setSizePolicy(sizePolicy);
+        dogImage_4->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
+        dogImage_4->setAlignment(Qt::AlignCenter);
+        dogImage_4->setMargin(0);
+        dogImage_4->setIndent(-1);
+        dogImage_4->raise();
+        frame_5->raise();
+
+        gridLayout->addWidget(dogOneFrame, 0, 0, 1, 1);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
+
+        gridLayout->addItem(verticalSpacer, 1, 0, 1, 1);
+
         DogsList->setCentralWidget(centralwidget);
 
         retranslateUi(DogsList);
@@ -157,9 +253,14 @@ public:
         contactUsLabelButton->setText(QCoreApplication::translate("DogsList", "Kontakt", nullptr));
         pawIconOnTheEdge_2->setText(QString());
         exitButton->setText(QString());
-        label->setText(QCoreApplication::translate("DogsList", "Dostupni psi", nullptr));
-        label_2->setText(QCoreApplication::translate("DogsList", "Ovdje mo\305\276ete prona\304\207i listu svih pasa spremnih za udomljavanje.", nullptr));
+        dogsListHeaderTitle->setText(QCoreApplication::translate("DogsList", "Dostupni psi", nullptr));
+        dogsListHeaderDescription->setText(QCoreApplication::translate("DogsList", "Ovdje mo\305\276ete prona\304\207i listu svih pasa spremnih za udomljavanje.", nullptr));
         exportButton->setText(QCoreApplication::translate("DogsList", "Export", nullptr));
+        dogsAge_7->setText(QCoreApplication::translate("DogsList", "Obu\304\215en, voli da se igra", nullptr));
+        moreInfoIcon_4->setText(QString());
+        dogsName_4->setText(QCoreApplication::translate("DogsList", "Pujdo", nullptr));
+        dogsAge_8->setText(QCoreApplication::translate("DogsList", ", 8 mjeseci", nullptr));
+        dogImage_4->setText(QString());
     } // retranslateUi
 
 };

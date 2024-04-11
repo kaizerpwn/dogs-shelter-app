@@ -164,6 +164,7 @@ public:
         rightArrowIcon = new QLabel(headerFrame);
         rightArrowIcon->setObjectName(QString::fromUtf8("rightArrowIcon"));
         rightArrowIcon->setGeometry(QRect(730, 426, 30, 30));
+        rightArrowIcon->setCursor(QCursor(Qt::PointingHandCursor));
         rightArrowIcon->setStyleSheet(QString::fromUtf8("opacity: 20%;\n"
 "background-color: transparent;"));
         dogHeaderImage = new QLabel(centralwidget);

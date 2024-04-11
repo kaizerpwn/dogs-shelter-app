@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowFlags(Qt::FramelessWindowHint);
     initializeImages(ui);
     ui->exitButton->installEventFilter(this);
+    ui->rightArrowIcon->installEventFilter(this);
 }
 
 MainWindow::~MainWindow()

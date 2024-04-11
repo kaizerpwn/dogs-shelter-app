@@ -1,11 +1,12 @@
 TODO:
-- Završiti DogsList screen u potpunosti
+- Završiti DogsList screen u potpunosti - DONE
 - Kreirati SQL fajl databaze (MySQL)
-- Povezati taj dio aplikacije sa databazom i da prikazuje sve pse iz database (flex layout, po 4 psa u jednom redu, taj dio aplikacije neka bude scrollable jer može biti velik broj pasa)
+- Povezati taj dio aplikacije sa databazom i da prikazuje sve pse iz database (grid layout, po 4 psa u jednom redu, taj dio aplikacije neka bude scrollable jer može biti velik broj pasa)
 - Dodati opciju da kada se klikne na ikonicu da prikaže više informacija o nekom psu
 - Dodati opciju za export svih pasa u text fajl
 
 GOOD TO HAVE:
+- Napraviti da se svaki window može pomjerati po screenu ako se drži
 - Border radius na svakoj formi (ko na dizajnu sa figme)
 - Da se otvori dialog sa nekim informacijama kad se klikni dugmad "Kontakt", "O nama" i "Doniraj"
 - Da se svaki window otvara na centru ekrana pri pokretanju aplikacije

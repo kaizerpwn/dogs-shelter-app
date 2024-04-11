@@ -224,7 +224,7 @@ font-size: 16px;</string>
    <widget class="QPushButton" name="exportButton">
     <property name="geometry">
      <rect>
-      <x>1067</x>
+      <x>1160</x>
       <y>170</y>
       <width>150</width>
       <height>45</height>
@@ -256,7 +256,7 @@ color: #fff;</string>
      <rect>
       <x>70</x>
       <y>240</y>
-      <width>1141</width>
+      <width>1241</width>
       <height>521</height>
      </rect>
     </property>

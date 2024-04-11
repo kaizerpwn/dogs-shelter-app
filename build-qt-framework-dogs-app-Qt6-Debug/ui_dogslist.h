@@ -150,7 +150,7 @@ public:
 "font-size: 16px;"));
         exportButton = new QPushButton(centralwidget);
         exportButton->setObjectName(QString::fromUtf8("exportButton"));
-        exportButton->setGeometry(QRect(1067, 170, 150, 45));
+        exportButton->setGeometry(QRect(1160, 170, 150, 45));
         sizePolicy.setHeightForWidth(exportButton->sizePolicy().hasHeightForWidth());
         exportButton->setSizePolicy(sizePolicy);
         exportButton->setCursor(QCursor(Qt::PointingHandCursor));
@@ -162,7 +162,7 @@ public:
 "color: #fff;"));
         widget = new QWidget(centralwidget);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(70, 240, 1141, 521));
+        widget->setGeometry(QRect(70, 240, 1241, 521));
         gridLayout = new QGridLayout(widget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);

@@ -14,6 +14,7 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    database.h \
     dogslist.h \
     events.h \
     images.h \

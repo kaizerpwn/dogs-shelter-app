@@ -40,7 +40,7 @@ public:
     QLabel *dogsListHeaderTitle;
     QLabel *dogsListHeaderDescription;
     QPushButton *exportButton;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QGridLayout *gridLayout;
     QSpacerItem *horizontalSpacer;
     QFrame *dogOneFrame;
@@ -59,6 +59,7 @@ public:
         if (DogsList->objectName().isEmpty())
             DogsList->setObjectName("DogsList");
         DogsList->resize(1366, 768);
+        DogsList->setMaximumSize(QSize(1366, 768));
         QIcon icon;
         icon.addFile(QString::fromUtf8("../resources/images/logo-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         DogsList->setWindowIcon(icon);
@@ -145,7 +146,7 @@ public:
         dogsListHeaderDescription->setObjectName("dogsListHeaderDescription");
         dogsListHeaderDescription->setGeometry(QRect(67, 194, 521, 21));
         dogsListHeaderDescription->setStyleSheet(QString::fromUtf8("color: #444;\n"
-"font-weight:200;\n"
+"font-weight:300;\n"
 "font-family: Montserrat;\n"
 "font-size: 16px;"));
         exportButton = new QPushButton(centralwidget);
@@ -160,17 +161,17 @@ public:
 "font-family: Montserrat;\n"
 "font-size: 20px;\n"
 "color: #fff;"));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(70, 240, 1241, 521));
-        gridLayout = new QGridLayout(widget);
+        layoutWidget1 = new QWidget(centralwidget);
+        layoutWidget1->setObjectName("layoutWidget1");
+        layoutWidget1->setGeometry(QRect(70, 240, 1241, 521));
+        gridLayout = new QGridLayout(layoutWidget1);
         gridLayout->setObjectName("gridLayout");
         gridLayout->setContentsMargins(0, 0, 0, 0);
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::Minimum);
 
         gridLayout->addItem(horizontalSpacer, 0, 1, 1, 1);
 
-        dogOneFrame = new QFrame(widget);
+        dogOneFrame = new QFrame(layoutWidget1);
         dogOneFrame->setObjectName("dogOneFrame");
         dogOneFrame->setMinimumSize(QSize(291, 281));
         dogOneFrame->setMaximumSize(QSize(291, 281));
@@ -201,7 +202,7 @@ public:
         moreInfoIcon_4->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
         layoutWidget_4 = new QWidget(frame_5);
         layoutWidget_4->setObjectName("layoutWidget_4");
-        layoutWidget_4->setGeometry(QRect(20, 10, 165, 27));
+        layoutWidget_4->setGeometry(QRect(20, 10, 165, 32));
         horizontalLayout_5 = new QHBoxLayout(layoutWidget_4);
         horizontalLayout_5->setSpacing(0);
         horizontalLayout_5->setObjectName("horizontalLayout_5");

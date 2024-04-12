@@ -10,6 +10,12 @@
     <height>768</height>
    </rect>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>1366</width>
+    <height>768</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Dogs Shelter</string>
   </property>

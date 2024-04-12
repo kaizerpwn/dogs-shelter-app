@@ -20,6 +20,7 @@ public:
 
 protected:
     bool eventFilter(QObject* obj, QEvent* event) override;
+    void addDog(const int& id, const QString& name, const QString& age, const QString& description, const QString& imagePath);
 private:
     Ui::DogsList *ui;
 };

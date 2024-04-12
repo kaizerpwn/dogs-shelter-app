@@ -43,6 +43,7 @@ public:
     QWidget *layoutWidget1;
     QGridLayout *gridLayout;
     QSpacerItem *horizontalSpacer;
+    QSpacerItem *verticalSpacer;
     QFrame *dogOneFrame;
     QFrame *frame_5;
     QLabel *dogsAge_7;
@@ -52,7 +53,6 @@ public:
     QLabel *dogsName_4;
     QLabel *dogsAge_8;
     QLabel *dogImage_4;
-    QSpacerItem *verticalSpacer;
 
     void setupUi(QMainWindow *DogsList)
     {
@@ -166,10 +166,15 @@ public:
         layoutWidget1->setGeometry(QRect(70, 240, 1241, 521));
         gridLayout = new QGridLayout(layoutWidget1);
         gridLayout->setObjectName("gridLayout");
+        gridLayout->setSizeConstraint(QLayout::SetMinimumSize);
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::Minimum);
+        horizontalSpacer = new QSpacerItem(10, 10, QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::Minimum);
 
         gridLayout->addItem(horizontalSpacer, 0, 1, 1, 1);
+
+        verticalSpacer = new QSpacerItem(10, 10, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::MinimumExpanding);
+
+        gridLayout->addItem(verticalSpacer, 1, 0, 1, 1);
 
         dogOneFrame = new QFrame(layoutWidget1);
         dogOneFrame->setObjectName("dogOneFrame");
@@ -237,10 +242,6 @@ public:
         frame_5->raise();
 
         gridLayout->addWidget(dogOneFrame, 0, 0, 1, 1);
-
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::MinimumExpanding);
-
-        gridLayout->addItem(verticalSpacer, 1, 0, 1, 1);
 
         DogsList->setCentralWidget(centralwidget);
 

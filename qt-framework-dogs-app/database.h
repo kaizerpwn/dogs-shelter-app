@@ -19,9 +19,9 @@ public:
         db.setDatabaseName("dogs-shelter");
 
         if (db.open()) {
-            qDebug() << "DOGS SHELTER: Connected to database.";
+            qDebug() << "[DOGS-SHELTER]: Connected to database.";
         } else {
-            qDebug() << "Failed to connect to database.";
+            qDebug() << "[DOGS-SHELTER]: Failed to connect to database.";
         }
         return db;
     }

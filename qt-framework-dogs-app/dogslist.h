@@ -5,6 +5,8 @@
 #include <QObject>
 #include <QEvent>
 #include <QMouseEvent>
+#include <QtSql>
+#include <QSqlDatabase>
 
 namespace Ui {
 class DogsList;

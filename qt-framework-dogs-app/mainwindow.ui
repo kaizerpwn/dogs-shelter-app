@@ -201,7 +201,7 @@ font-family: Montserrat;</string>
      <property name="styleSheet">
       <string notr="true">color: #444;
 font-size: 24px;
-font-weight:  200;
+font-weight:  300;
 font-family: Montserrat;</string>
      </property>
      <property name="text">
@@ -211,7 +211,7 @@ font-family: Montserrat;</string>
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>63</x>
        <y>150</y>
        <width>691</width>
        <height>61</height>
@@ -220,7 +220,7 @@ font-family: Montserrat;</string>
      <property name="styleSheet">
       <string notr="true">color: #444;
 font-size: 16px;
-font-weight:  200;
+font-weight:  300;
 font-family: Montserrat; </string>
      </property>
      <property name="text">

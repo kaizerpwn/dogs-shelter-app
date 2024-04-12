@@ -1,9 +1,9 @@
 #include "dogslist.h"
-#include "mainwindow.h"
 #include "ui_dogslist.h"
 
 #include <QPixmap>
 #include <QDebug>
+
 
 DogsList::DogsList(QWidget *parent) :
     QMainWindow(parent),

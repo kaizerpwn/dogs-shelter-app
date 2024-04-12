@@ -28,8 +28,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    void mousePressEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;
 };

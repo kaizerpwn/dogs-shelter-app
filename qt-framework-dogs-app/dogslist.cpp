@@ -1,13 +1,12 @@
 #include "dogslist.h"
+#include "qscrollarea.h"
 #include "ui_dogslist.h"
 #include "database.h"
 
 #include <QPixmap>
-#include <QVBoxLayout>
-#include <QLabel>
+#include <QGridLayout>
 #include <QWidget>
 #include <QDebug>
-#include <QFontMetrics>
 
 DogsList::DogsList(QWidget *parent) :
     QMainWindow(parent),
@@ -27,27 +26,42 @@ DogsList::DogsList(QWidget *parent) :
     QPixmap pawIconOnTheEdge("../resources/images/background-particle-132x141.png");
     ui->pawIconOnTheEdge_2->setPixmap(pawIconOnTheEdge);
 
-    QPixmap moreInfoIcon("../resources/images/more-info-icon.png");
-    ui->moreInfoIcon_4->setPixmap(moreInfoIcon);
-
-    QPixmap dogImage("../resources/images/dogs/dog-1.png");
-    ui->dogImage_4->setPixmap(dogImage);
-
     QSqlDatabase& db = DatabaseManager::getDatabaseInstance();
-
     QSqlQuery query(db);
 
-    ui->dogOneFrame->setVisible(false);
+    QScrollArea *scrollArea = new QScrollArea(this);
+    scrollArea->setMinimumSize(1241, 521);
+    scrollArea->setGeometry(55, 235, 1241, 521);
+    scrollArea->setWidgetResizable(true);
+    scrollArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    if (query.exec("SELECT * FROM dog LIMIT 8")) {
+    QWidget *dogsFrame = new QWidget(scrollArea);
+    QGridLayout *dogsLayout = new QGridLayout(dogsFrame);
+    dogsLayout->setVerticalSpacing(20);
+
+    int columns = 4;
+    int row = 0;
+    int col = 0;
+
+    if (query.exec("SELECT * FROM dog")) {
         while (query.next()) {
             int id = query.value("id").toInt() - 1;
-            addDog(id, query.value("name").toString(), "("+query.value("birth_date").toString()+")", query.value("race").toString(), query.value("image").toString());
+            addDog(id, query.value("name").toString(), "("+query.value("birth_date").toString()+")", query.value("race").toString(), query.value("image").toString(), dogsLayout, row, col);
+            col++;
+            if (col == columns) {
+                col = 0;
+                row++;
+            }
         }
     } else {
         qDebug() << "Query execution failed:" << query.lastError().text();
     }
 
+    scrollArea->setWidget(dogsFrame);
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    mainLayout->addWidget(scrollArea);
+
+    setLayout(mainLayout);
 }
 
 DogsList::~DogsList()
@@ -55,7 +69,7 @@ DogsList::~DogsList()
     delete ui;
 }
 
-void DogsList::addDog(const int& id, const QString& name, const QString& age, const QString& description, const QString& imagePath) {
+void DogsList::addDog(const int& id, const QString& name, const QString& age, const QString& description, const QString& imagePath, QGridLayout *layout, int row, int col) {
     QFrame* dogFrame = new QFrame(this);
     dogFrame->setObjectName("dogFrame_" + name + age);
     dogFrame->setMinimumSize(291, 281);
@@ -103,10 +117,7 @@ void DogsList::addDog(const int& id, const QString& name, const QString& age, co
     infoIcon->setCursor(Qt::PointingHandCursor);
     infoIcon->lower();
 
-    int row = id / 4;
-    int column = id % 4;
-
-    ui->gridLayout->addWidget(dogFrame, row, column);
+    layout->addWidget(dogFrame, row, col);
 }
 
 bool DogsList::eventFilter(QObject* obj, QEvent* event)

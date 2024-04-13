@@ -2,6 +2,7 @@
 #define EVENTS_H
 
 #include "dogslist.h"
+#include "database.h"
 #include <QMouseEvent>
 
 bool MainWindow::eventFilter(QObject* obj, QEvent* event)
@@ -13,6 +14,7 @@ bool MainWindow::eventFilter(QObject* obj, QEvent* event)
             QMouseEvent* mouseEvent = dynamic_cast<QMouseEvent*>(event);
             if (mouseEvent && mouseEvent->button() == Qt::LeftButton)
             {
+                DatabaseManager::deleteDatabaseInstance();
                 QCoreApplication::quit();
                 return true;
             }

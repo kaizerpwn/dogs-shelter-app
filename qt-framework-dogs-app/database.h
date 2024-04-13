@@ -11,6 +11,16 @@ public:
         return db;
     }
 
+    static void closeDatabaseInstance() {
+        QSqlDatabase db = getDatabaseInstance();
+        db.close();
+    }
+
+    static void deleteDatabaseInstance() {
+        closeDatabaseInstance();
+        QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
+    }
+
     static QSqlDatabase initializeDatabase() {
         QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
         db.setHostName("127.0.0.1");
@@ -26,6 +36,5 @@ public:
         return db;
     }
 };
-
 
 #endif

@@ -48,7 +48,7 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8("../resources/images/logo-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         DogsList->setWindowIcon(icon);
-        DogsList->setStyleSheet(QString::fromUtf8("background-color: #F8F3E0;"));
+        DogsList->setStyleSheet(QString::fromUtf8("background-color: #F8F3E0; "));
         centralwidget = new QWidget(DogsList);
         centralwidget->setObjectName("centralwidget");
         centralwidget->setStyleSheet(QString::fromUtf8("border-radius: 20px;"));

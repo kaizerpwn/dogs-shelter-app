@@ -4,6 +4,7 @@
 #include "database.h"
 
 #include <QPixmap>
+#include <QFileDialog>
 #include <QGridLayout>
 #include <QWidget>
 #include <QDebug>
@@ -62,6 +63,7 @@ DogsList::DogsList(QWidget *parent) :
     mainLayout->addWidget(scrollArea);
 
     setLayout(mainLayout);
+    connect(ui->exportButton, &QPushButton::clicked, this, &DogsList::exportData);
 }
 
 DogsList::~DogsList()
@@ -148,4 +150,43 @@ bool DogsList::eventFilter(QObject* obj, QEvent* event)
         }
     }
     return QObject::eventFilter(obj, event);
+}
+void DogsList::exportData()
+{
+    QString filePath = QFileDialog::getSaveFileName(this, "Save Dogs Data", QDir::currentPath(), "Text Files (*.txt)");
+    if (!filePath.isEmpty()) {
+        QFile file(filePath);
+        if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream out(&file);
+
+            QSqlDatabase& db = DatabaseManager::getDatabaseInstance();
+            QSqlQuery query(db);
+
+            if (query.exec("SELECT * FROM dog")) {
+                while (query.next()) {
+                    QString id = query.value("id").toString();
+                    QString name = query.value("name").toString();
+                    QString race = query.value("race").toString();
+                    QString gender = query.value("gender").toString();
+                    QString birthDate = query.value("birth_date").toString();
+                    QString weight = query.value("weight").toString();
+                    QString height = query.value("height").toString();
+                    QString vaccinations = query.value("vaccinations").toString();
+                    QString lastVetVisit = query.value("last_vet_visit").toString();
+                    QString image = query.value("image").toString();
+
+
+                    out << id << "|" << name << "|" << race << "|" << gender << "|" << birthDate << "|"
+                        << weight << "|" << height << "|" << vaccinations << "|" << lastVetVisit << "|" << image << "\n";
+                }
+                file.close();
+                qDebug() << "Data exported successfully to" << filePath;
+            } else {
+                qDebug() << "Query execution failed:" << query.lastError().text();
+                file.remove(); // brise query ako se ne napravi novi file
+            }
+        } else {
+            qDebug() << "Failed to open file for writing";
+        }
+    }
 }

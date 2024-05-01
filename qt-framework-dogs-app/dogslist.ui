@@ -24,7 +24,7 @@
     <normaloff>../resources/images/logo-icon.png</normaloff>../resources/images/logo-icon.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #F8F3E0;</string>
+   <string notr="true">background-color: #F8F3E0; </string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">

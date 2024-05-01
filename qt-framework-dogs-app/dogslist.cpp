@@ -1,6 +1,7 @@
 #include "dogslist.h"
 #include "qscrollarea.h"
 #include "ui_dogslist.h"
+#include "doginfodialog.h"
 #include "database.h"
 
 #include <QPixmap>
@@ -87,7 +88,7 @@ void DogsList::addDog(const int& id, const QString& name, const QString& age, co
     imageLabel->lower();
 
     QFrame* infoFrame = new QFrame(dogFrame);
-    infoFrame->setObjectName("infoFrame_" + name + age);
+    infoFrame->setObjectName("infoFrame_" + QString::number(id+1));
     infoFrame->setMinimumSize(291, 72);
     infoFrame->setMaximumSize(291, 72);
     infoFrame->setStyleSheet("width: 100%; background-color: rgba(233,228,212, 0.9); border-top-left-radius: 0px !important; border-top-right-radius: 0px !important; border-bottom-left-radius: 20px !important; border-bottom-right-radius: 20px !important; ");
@@ -111,14 +112,14 @@ void DogsList::addDog(const int& id, const QString& name, const QString& age, co
     descriptionLabel->setStyleSheet("font-size: 15px; color: #444; background-color: transparent;");
     descriptionLabel->setGeometry(21, 20, 150, 50);
 
-    QLabel* infoIcon = new QLabel(infoFrame);
-    QPixmap infoIconUrl("../resources/images/more-info-icon.png");
-    infoIcon->setPixmap(infoIconUrl);
-    infoIcon->setAlignment(Qt::AlignCenter);
-    infoIcon->setGeometry(291 - 60, 12, 50, 50);
-    infoIcon->setCursor(Qt::PointingHandCursor);
-    infoIcon->lower();
+    QPushButton* infoButton = new QPushButton(infoFrame);
+    infoButton->setIcon(QIcon("../resources/images/more-info-icon.png"));
+    infoButton->setIconSize(QSize(50, 50));
+    infoButton->setStyleSheet("background-color: transparent; border: none;");
+    infoButton->setCursor(Qt::PointingHandCursor);
+    infoButton->setGeometry(291 - 60, 12, 50, 50);
 
+    connect(infoButton, &QPushButton::clicked, this, &DogsList::openDogModal);
     layout->addWidget(dogFrame, row, col);
 }
 
@@ -151,6 +152,29 @@ bool DogsList::eventFilter(QObject* obj, QEvent* event)
     }
     return QObject::eventFilter(obj, event);
 }
+
+void DogsList::openDogModal()
+{
+    QPushButton *infoButton = qobject_cast<QPushButton*>(sender());
+    if (infoButton) {
+        QFrame* infoFrame = qobject_cast<QFrame*>(infoButton->parentWidget());
+        if (infoFrame) {
+            QString objName = infoFrame->objectName();
+            QString dogId = objName.mid(objName.indexOf("_") + 1);
+            qDebug() << dogId;
+
+            QString name, race, birthDate, weight, height, lastVetVisit;
+            if (fetchDogInfo(dogId.toInt(), name, race, birthDate, weight, height, lastVetVisit)) {
+                DogInfoDialog dialog;
+                dialog.setDogInfo(name, race, birthDate, weight+"kg", height+"cm", lastVetVisit);
+                dialog.exec();
+            } else {
+                qDebug() << "Failed to fetch dog information for ID:" << dogId;
+            }
+        }
+    }
+}
+
 void DogsList::exportData()
 {
     QString filePath = QFileDialog::getSaveFileName(this, "Save Dogs Data", QDir::currentPath(), "Text Files (*.txt)");
@@ -183,10 +207,37 @@ void DogsList::exportData()
                 qDebug() << "Data exported successfully to" << filePath;
             } else {
                 qDebug() << "Query execution failed:" << query.lastError().text();
-                file.remove(); // brise query ako se ne napravi novi file
+                file.remove();
             }
         } else {
             qDebug() << "Failed to open file for writing";
         }
+    }
+}
+
+bool DogsList::fetchDogInfo(int dogId, QString &name, QString &race, QString &birthDate, QString &weight, QString &height, QString &lastVetVisit)
+{
+    QSqlDatabase& db = DatabaseManager::getDatabaseInstance();
+    QSqlQuery query(db);
+
+    query.prepare("SELECT name, race, birth_date, weight, height, last_vet_visit FROM dog WHERE id = :id");
+    query.bindValue(":id", dogId);
+
+    if (!query.exec()) {
+        qDebug() << "Failed to fetch dog information for ID:" << dogId << "Error:" << query.lastError().text();
+        return false;
+    }
+
+    if (query.next()) {
+        name = query.value("name").toString();
+        race = query.value("race").toString();
+        birthDate = query.value("birth_date").toString();
+        weight = query.value("weight").toString();
+        height = query.value("height").toString();
+        lastVetVisit = query.value("last_vet_visit").toString();
+        return true;
+    } else {
+        qDebug() << "No dog found for ID:" << dogId;
+        return false;
     }
 }

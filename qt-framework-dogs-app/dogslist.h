@@ -22,6 +22,8 @@ public:
 protected:
     void exportData();
     bool eventFilter(QObject* obj, QEvent* event) override;
+    void openDogModal();
+    bool fetchDogInfo(int dogId, QString &name, QString &race, QString &birthDate, QString &weight, QString &height, QString &lastVetVisit);
     void addDog(const int& id, const QString& name, const QString& age, const QString& description, const QString& imagePath, QGridLayout *layout, int row, int col);
 private:
     Ui::DogsList *ui;

@@ -9,18 +9,21 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    doginfodialog.cpp \
     dogslist.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     database.h \
+    doginfodialog.h \
     dogslist.h \
     events.h \
     images.h \
     mainwindow.h
 
 FORMS += \
+    doginfodialog.ui \
     dogslist.ui \
     mainwindow.ui
 

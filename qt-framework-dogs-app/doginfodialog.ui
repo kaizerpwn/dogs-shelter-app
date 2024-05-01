@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DogInfoDialog</class>
+ <widget class="QWidget" name="DogInfoDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>368</width>
+    <height>249</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #E9E4D4;  </string>
+  </property>
+  <widget class="QLabel" name="exitButton">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>10</y>
+     <width>51</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:  transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="nameLabel">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>10</y>
+     <width>151</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #017F36;
+font-weight:bold;
+font-family: Montserrat; 
+font-size: 20px;</string>
+   </property>
+   <property name="text">
+    <string>Rio</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="raceLabel">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>80</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #444;
+font-weight:400;
+font-family: Montserrat; </string>
+   </property>
+   <property name="text">
+    <string>German Shepherd</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="birthDateLabel">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>105</y>
+     <width>181</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #444;
+font-weight:400;
+font-family: Montserrat; </string>
+   </property>
+   <property name="text">
+    <string>2018-04-19</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ageLabel_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>80</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #444;
+font-weight:bold;
+font-family: Montserrat; </string>
+   </property>
+   <property name="text">
+    <string>Rasa:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ageLabel_3">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>100</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #444;
+font-weight:bold;
+font-family: Montserrat; </string>
+   </property>
+   <property name="text">
+    <string>Datum rođenja:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ageLabel_4">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>125</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #444;
+font-weight:bold;
+font-family: Montserrat; </string>
+   </property>
+   <property name="text">
+    <string>Težina</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="weightLabel">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>130</y>
+     <width>181</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #444;
+font-weight:400;
+font-family: Montserrat; </string>
+   </property>
+   <property name="text">
+    <string>35kg</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="heightLabel">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>155</y>
+     <width>181</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #444;
+font-weight:400;
+font-family: Montserrat; </string>
+   </property>
+   <property name="text">
+    <string>30cm</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ageLabel_5">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>150</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #444;
+font-weight:bold;
+font-family: Montserrat; </string>
+   </property>
+   <property name="text">
+    <string>Visina</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lastVetVisitDateLabelL">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>175</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #444;
+font-weight:400;
+font-family: Montserrat; </string>
+   </property>
+   <property name="text">
+    <string>2023-05-14</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ageLabel_6">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>170</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #444;
+font-weight:bold;
+font-family: Montserrat; </string>
+   </property>
+   <property name="text">
+    <string>Zadnja posjeta veterinaru:</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

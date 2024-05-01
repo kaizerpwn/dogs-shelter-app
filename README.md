@@ -19,3 +19,10 @@ Desktop application for managing shelter dogs, allowing users to record and trac
     <td>Employed as the relational database management system</td>
   </tr>
 </table>
+
+## Screenshots
+### 1. Main window
+![Screenshot_3](https://github.com/kaizerpwn/dogs-shelter-app/assets/70588174/e45bf161-4d7f-4c57-a1d3-7ac2f3a0310a)
+
+### 2. Dogs list window
+![Screenshot_4](https://github.com/kaizerpwn/dogs-shelter-app/assets/70588174/fd96ca7b-6d35-4ef5-aebd-7dad75492386)

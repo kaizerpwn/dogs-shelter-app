@@ -23,4 +23,4 @@ private:
 };
 
 
-#endif // DOGINFODIALOG_H
+#endif

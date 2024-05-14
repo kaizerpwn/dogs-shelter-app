@@ -1,7 +1,7 @@
 #include "dogslist.h"
 #include "qscrollarea.h"
 #include "ui_dogslist.h"
-#include "doginfodialog.h"
+#include "viewdogwindow.h"
 #include "database.h"
 
 #include <QPixmap>
@@ -10,9 +10,8 @@
 #include <QWidget>
 #include <QDebug>
 
-DogsList::DogsList(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::DogsList)
+DogsList::DogsList(QWidget *parent, QWidget *parentWidget)
+    : QMainWindow(parent), ui(new Ui::DogsList), m_parentWidget(parentWidget)
 {
     ui->setupUi(this);
     ui->exitButton->installEventFilter(this);
@@ -36,6 +35,26 @@ DogsList::DogsList(QWidget *parent) :
     scrollArea->setGeometry(55, 235, 1241, 521);
     scrollArea->setWidgetResizable(true);
     scrollArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    QString scrollAreaStyleSheet = "QScrollArea {"
+                                   "    border: none;"
+                                   "}"
+                                   "QScrollBar:vertical {"
+                                   "    border: none;"
+                                   "    background-color: #F0F0F0;"
+                                   "    width: 12px;"
+                                   "}"
+                                   "QScrollBar::handle:vertical {"
+                                   "    background-color: #C0C0C0;"
+                                   "    min-height: 20px;"
+                                   "}"
+                                   "QScrollBar::add-line:vertical {"
+                                   "    height: 0px;"
+                                   "}"
+                                   "QScrollBar::sub-line:vertical {"
+                                   "    height: 0px;"
+                                   "}";
+    scrollArea->setStyleSheet(scrollAreaStyleSheet);
+
 
     QWidget *dogsFrame = new QWidget(scrollArea);
     QGridLayout *dogsLayout = new QGridLayout(dogsFrame);
@@ -69,6 +88,7 @@ DogsList::DogsList(QWidget *parent) :
 
 DogsList::~DogsList()
 {
+    qDebug() << "DogsList destructor called.";
     delete ui;
 }
 
@@ -145,7 +165,8 @@ bool DogsList::eventFilter(QObject* obj, QEvent* event)
             QMouseEvent* mouseEvent = dynamic_cast<QMouseEvent*>(event);
             if (mouseEvent && mouseEvent->button() == Qt::LeftButton)
             {
-                close();
+                hide();
+                m_parentWidget->show();
                 return true;
             }
         }
@@ -161,19 +182,24 @@ void DogsList::openDogModal()
         if (infoFrame) {
             QString objName = infoFrame->objectName();
             QString dogId = objName.mid(objName.indexOf("_") + 1);
-            qDebug() << dogId;
 
-            QString name, race, birthDate, weight, height, lastVetVisit;
-            if (fetchDogInfo(dogId.toInt(), name, race, birthDate, weight, height, lastVetVisit)) {
-                DogInfoDialog dialog;
-                dialog.setDogInfo(name, race, birthDate, weight+"kg", height+"cm", lastVetVisit);
-                dialog.exec();
+            QString name, race, birthDate, weight, height, lastVetVisit, image;
+            if (fetchDogInfo(dogId.toInt(), name, race, birthDate, weight, height, lastVetVisit, image)) {
+                hide();
+                if(!viewDogWindow)
+                {
+                    viewDogWindow = new ViewDogWindow(nullptr, this);
+                    viewDogWindow->setWindowFlags(Qt::FramelessWindowHint);
+                }
+                viewDogWindow->setDogInfo(name, race, birthDate, weight, height, lastVetVisit, image);
+                viewDogWindow->show();
             } else {
                 qDebug() << "Failed to fetch dog information for ID:" << dogId;
             }
         }
     }
 }
+
 
 void DogsList::exportData()
 {
@@ -193,8 +219,8 @@ void DogsList::exportData()
                     QString race = query.value("race").toString();
                     QString gender = query.value("gender").toString();
                     QString birthDate = query.value("birth_date").toString();
-                    QString weight = query.value("weight").toString();
-                    QString height = query.value("height").toString();
+                    QString weight = query.value("weight").toString() + "kg";
+                    QString height = query.value("height").toString() + "cm";
                     QString vaccinations = query.value("vaccinations").toString();
                     QString lastVetVisit = query.value("last_vet_visit").toString();
                     QString image = query.value("image").toString();
@@ -215,12 +241,12 @@ void DogsList::exportData()
     }
 }
 
-bool DogsList::fetchDogInfo(int dogId, QString &name, QString &race, QString &birthDate, QString &weight, QString &height, QString &lastVetVisit)
+bool DogsList::fetchDogInfo(int dogId, QString &name, QString &race, QString &birthDate, QString &weight, QString &height, QString &lastVetVisit, QString &image)
 {
     QSqlDatabase& db = DatabaseManager::getDatabaseInstance();
     QSqlQuery query(db);
 
-    query.prepare("SELECT name, race, birth_date, weight, height, last_vet_visit FROM dog WHERE id = :id");
+    query.prepare("SELECT * FROM dog WHERE id = :id");
     query.bindValue(":id", dogId);
 
     if (!query.exec()) {
@@ -232,9 +258,10 @@ bool DogsList::fetchDogInfo(int dogId, QString &name, QString &race, QString &bi
         name = query.value("name").toString();
         race = query.value("race").toString();
         birthDate = query.value("birth_date").toString();
-        weight = query.value("weight").toString();
-        height = query.value("height").toString();
+        weight = query.value("weight").toString() + "kg";
+        height = query.value("height").toString() + "cm";
         lastVetVisit = query.value("last_vet_visit").toString();
+        image = query.value("image").toString();
         return true;
     } else {
         qDebug() << "No dog found for ID:" << dogId;

@@ -6,6 +6,8 @@
 #include <QEvent>
 #include <QPoint>
 
+#include "dogslist.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
     class MainWindow;
@@ -32,6 +34,7 @@ private:
     void mouseMoveEvent(QMouseEvent *event) override;
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;
+    DogsList *dogsListWindow = nullptr;
 };
 
 #endif

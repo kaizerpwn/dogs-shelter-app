@@ -31,9 +31,13 @@ void MainWindow::on_exitButton_linkActivated()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    DogsList *dogsListForm = new DogsList(this);
-    dogsListForm->setWindowFlags(Qt::FramelessWindowHint);
-    dogsListForm->show();
+    hide();
+    if(!dogsListWindow)
+    {
+        dogsListWindow = new DogsList(nullptr, this);
+        dogsListWindow->setWindowFlags(Qt::FramelessWindowHint);
+    }
+    dogsListWindow->show();
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)

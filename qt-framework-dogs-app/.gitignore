@@ -71,4 +71,5 @@ CMakeLists.txt.user*
 # --------
 *.dll
 *.exe
-
+build-qt-framework-dogs-app-Desktop_Qt_6_6_3_MinGW_64_bit-Debug
+./build-qt-framework-dogs-app-Desktop_Qt_6_6_3_MinGW_64_bit-Debug

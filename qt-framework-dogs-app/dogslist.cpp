@@ -191,7 +191,7 @@ void DogsList::openDogModal()
                     viewDogWindow = new ViewDogWindow(nullptr, this);
                     viewDogWindow->setWindowFlags(Qt::FramelessWindowHint);
                 }
-                viewDogWindow->setDogInfo(name, race, birthDate, weight, height, lastVetVisit, image);
+                viewDogWindow->setDogInfo(name, race, birthDate, weight, height, lastVetVisit, image, dogId);
                 viewDogWindow->show();
             } else {
                 qDebug() << "Failed to fetch dog information for ID:" << dogId;

@@ -11,6 +11,7 @@ ViewDogWindow::ViewDogWindow(QWidget *parent, QWidget *parentWidget)
     ui->homeLabelButton->installEventFilter(this);
     ui->navigationMenuLogo->installEventFilter(this);
     ui->backToTheDogsListButton->installEventFilter(this);
+    ui->deleteDogButton->installEventFilter(this);
     ui->editDogButton_1->installEventFilter(this);
     ui->editDogButton_2->installEventFilter(this);
     ui->editDogButton_3->installEventFilter(this);
@@ -154,11 +155,30 @@ bool ViewDogWindow::eventFilter(QObject* obj, QEvent* event)
             }
         }
     }
-    if (obj == ui->editDogButton_1 || obj == ui->editDogButton_2 || obj == ui->editDogButton_3 || obj == ui->editDogButton_4 || obj == ui->editDogButton_5 ||
+    if (obj == ui->editDogButton_1 || obj == ui->editDogButton_2 || obj == ui->editDogButton_3 || obj == ui->editDogButton_4 || obj == ui->editDogButton_5 || ui->deleteDogButton ||
         obj == ui->cancelEditButton_1 || obj == ui->cancelEditButton_2 || obj == ui->cancelEditButton_3 || obj == ui->cancelEditButton_4 || obj == ui->cancelEditButton_5) {
         if (event->type() == QEvent::MouseButtonPress) {
             QMouseEvent* mouseEvent = dynamic_cast<QMouseEvent*>(event);
             if (mouseEvent && mouseEvent->button() == Qt::LeftButton) {
+
+                if(obj == ui->deleteDogButton)
+                {
+                    QSqlDatabase& db = DatabaseManager::getDatabaseInstance();
+                    QSqlQuery query(db);
+
+                    QString updateQuery = "DELETE FROM dog WHERE id = :id";
+                    query.prepare(updateQuery);
+                    query.bindValue(":id", dogsId);
+
+                    if (query.exec()) {
+                        qDebug() << "Dog successfully deleted.";
+                        hide();
+                        m_parentWidget->show();
+                    } else {
+                        qDebug() << "Failed to delete dog from the database:" << query.lastError().text();
+                    }
+                }
+
                 if (obj == ui->editDogButton_1)
                     handleEditLabel(ui->editDogButton_1, dogsBirthDateEditing, ui->birthDateLabel, ui->cancelEditButton_1);
                 else if (obj == ui->editDogButton_2)

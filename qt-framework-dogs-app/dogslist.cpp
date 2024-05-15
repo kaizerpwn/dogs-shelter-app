@@ -56,8 +56,8 @@ DogsList::DogsList(QWidget *parent, QWidget *parentWidget)
     scrollArea->setStyleSheet(scrollAreaStyleSheet);
 
 
-    QWidget *dogsFrame = new QWidget(scrollArea);
-    QGridLayout *dogsLayout = new QGridLayout(dogsFrame);
+    dogsFrame = new QWidget(scrollArea);
+    dogsLayout = new QGridLayout(dogsFrame);
     dogsLayout->setVerticalSpacing(20);
 
     int columns = 4;
@@ -90,6 +90,17 @@ DogsList::~DogsList()
 {
     qDebug() << "DogsList destructor called.";
     delete ui;
+}
+
+void DogsList::mousePressEvent(QMouseEvent *event)
+{
+    m_nMouseClick_X_Coordinate = event->position().x();
+    m_nMouseClick_Y_Coordinate = event->position().y();
+}
+
+void DogsList::mouseMoveEvent(QMouseEvent *event)
+{
+    move(event->globalPosition().x() - m_nMouseClick_X_Coordinate, event->globalPosition().y() - m_nMouseClick_Y_Coordinate);
 }
 
 void DogsList::addDog(const int& id, const QString& name, const QString& age, const QString& description, const QString& imagePath, QGridLayout *layout, int row, int col) {
@@ -266,5 +277,34 @@ bool DogsList::fetchDogInfo(int dogId, QString &name, QString &race, QString &bi
     } else {
         qDebug() << "No dog found for ID:" << dogId;
         return false;
+    }
+}
+
+void DogsList::refetchDogs() {
+    QLayoutItem *child;
+    while ((child = dogsFrame->layout()->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+
+    QSqlDatabase& db = DatabaseManager::getDatabaseInstance();
+    QSqlQuery query(db);
+
+    int columns = 4;
+    int row = 0;
+    int col = 0;
+
+    if (query.exec("SELECT * FROM dog")) {
+        while (query.next()) {
+            int id = query.value("id").toInt() - 1;
+            addDog(id, query.value("name").toString(), "("+query.value("birth_date").toString()+")", query.value("race").toString(), query.value("image").toString(), dogsLayout, row, col);
+            col++;
+            if (col == columns) {
+                col = 0;
+                row++;
+            }
+        }
+    } else {
+        qDebug() << "Query execution failed:" << query.lastError().text();
     }
 }

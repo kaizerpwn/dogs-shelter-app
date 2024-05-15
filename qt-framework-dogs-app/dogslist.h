@@ -20,6 +20,10 @@ class DogsList : public QMainWindow
 public:
     explicit DogsList(QWidget *parent = nullptr, QWidget *parentWidget = nullptr);
     ~DogsList();
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    int m_nMouseClick_X_Coordinate;
+    int m_nMouseClick_Y_Coordinate;
 
 protected:
     void exportData();
@@ -27,8 +31,11 @@ protected:
     void openDogModal();
     bool fetchDogInfo(int dogId, QString &name, QString &race, QString &birthDate, QString &weight, QString &height, QString &lastVetVisit, QString &image);
     void addDog(const int& id, const QString& name, const QString& age, const QString& description, const QString& imagePath, QGridLayout *layout, int row, int col);
+    void refetchDogs();
 private:
     Ui::DogsList *ui;
+    QWidget *dogsFrame;
+    QGridLayout *dogsLayout;
     ViewDogWindow *viewDogWindow = nullptr;
     QWidget *m_parentWidget;
 };

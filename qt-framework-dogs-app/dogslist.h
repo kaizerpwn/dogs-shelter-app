@@ -25,13 +25,15 @@ public:
     int m_nMouseClick_X_Coordinate;
     int m_nMouseClick_Y_Coordinate;
 
+
 protected:
     void exportData();
     bool eventFilter(QObject* obj, QEvent* event) override;
     void openDogModal();
     bool fetchDogInfo(int dogId, QString &name, QString &race, QString &birthDate, QString &weight, QString &height, QString &lastVetVisit, QString &image);
     void addDog(const int& id, const QString& name, const QString& age, const QString& description, const QString& imagePath, QGridLayout *layout, int row, int col);
-    void refetchDogs();
+    void refetch();
+
 private:
     Ui::DogsList *ui;
     QWidget *dogsFrame;

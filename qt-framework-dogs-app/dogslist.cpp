@@ -156,6 +156,10 @@ void DogsList::addDog(const int& id, const QString& name, const QString& age, co
 
 bool DogsList::eventFilter(QObject* obj, QEvent* event)
 {
+    if (event->type() == QEvent::WindowActivate) {
+        refetch();
+    }
+
     if (obj == ui->exitButton)
     {
         if (event->type() == QEvent::MouseButtonPress)
@@ -280,7 +284,7 @@ bool DogsList::fetchDogInfo(int dogId, QString &name, QString &race, QString &bi
     }
 }
 
-void DogsList::refetchDogs() {
+void DogsList::refetch() {
     QLayoutItem *child;
     while ((child = dogsFrame->layout()->takeAt(0)) != nullptr) {
         delete child->widget();

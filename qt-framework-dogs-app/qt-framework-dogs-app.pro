@@ -9,12 +9,14 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    createdogmodal.cpp \
     dogslist.cpp \
     main.cpp \
     mainwindow.cpp \
     viewdogwindow.cpp
 
 HEADERS += \
+    createdogmodal.h \
     database.h \
     dogslist.h \
     events.h \
@@ -23,6 +25,7 @@ HEADERS += \
     viewdogwindow.h
 
 FORMS += \
+    createdogmodal.ui \
     dogslist.ui \
     mainwindow.ui \
     viewdogwindow.ui

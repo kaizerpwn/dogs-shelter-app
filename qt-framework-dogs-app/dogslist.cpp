@@ -2,6 +2,7 @@
 #include "qscrollarea.h"
 #include "ui_dogslist.h"
 #include "viewdogwindow.h"
+#include "createdogmodal.h"
 #include "database.h"
 
 #include <QPixmap>
@@ -312,3 +313,13 @@ void DogsList::refetch() {
         qDebug() << "Query execution failed:" << query.lastError().text();
     }
 }
+
+void DogsList::on_exportButton_2_clicked()
+{
+    if(!dogModal)
+    {
+        dogModal = new CreateDogModal();
+    }
+    dogModal->show();
+}
+

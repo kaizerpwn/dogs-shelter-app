@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CreateDogModal</class>
+ <widget class="QWidget" name="CreateDogModal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>612</width>
+    <height>633</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Create new dog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #E9E4D4;  </string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>20</y>
+     <width>201</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-family: Montserrat;
+font-size: 22px;
+color: #017F36;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>DODAVANJE PSA</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>70</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-family: Montserrat;
+font-size: 18px;
+color: #444;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Ime</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="nameInput">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>100</y>
+     <width>261</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background-color: #F8F3E0;
+color: #444;
+border-radius: 10px;
+padding-left: 20px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Unesite ime psa</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="raceInput">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>100</y>
+     <width>261</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background-color: #F8F3E0;
+color: #444;
+border-radius: 10px;
+padding-left: 20px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Unesite rasu psa</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>70</y>
+     <width>51</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-family: Montserrat;
+font-size: 18px;
+color: #444;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Rasa</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>160</y>
+     <width>151</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-family: Montserrat;
+font-size: 18px;
+color: #444;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Datum rođenja</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="birthDateInput">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>190</y>
+     <width>561</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background-color: #F8F3E0;
+color: #444;
+border-radius: 10px;
+padding-left: 20px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Unesite datum rođenja</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="weightInput">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>280</y>
+     <width>261</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background-color: #F8F3E0;
+color: #444;
+border-radius: 10px;
+padding-left: 20px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Unesite težinu</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>250</y>
+     <width>151</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-family: Montserrat;
+font-size: 18px;
+color: #444;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Težina</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>250</y>
+     <width>151</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-family: Montserrat;
+font-size: 18px;
+color: #444;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Visina</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="heightInput">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>280</y>
+     <width>261</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background-color: #F8F3E0;
+color: #444;
+border-radius: 10px;
+padding-left: 20px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Unesite visinu</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>340</y>
+     <width>151</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-family: Montserrat;
+font-size: 18px;
+color: #444;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Slika</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="imageUrlInput">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>370</y>
+     <width>561</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background-color: #F8F3E0;
+color: #444;
+border-radius: 10px;
+padding-left: 20px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Unesite sliku psa</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>430</y>
+     <width>151</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-family: Montserrat;
+font-size: 18px;
+color: #444;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Broj vakcina</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>430</y>
+     <width>271</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-family: Montserrat;
+font-size: 18px;
+color: #444;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Zadnja posjeta veterinaru</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="vaccineNumberInput">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>460</y>
+     <width>261</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background-color: #F8F3E0;
+color: #444;
+border-radius: 10px;
+padding-left: 20px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="readOnly">
+    <bool>false</bool>
+   </property>
+   <property name="placeholderText">
+    <string>Unesite broj vakcina</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lastVetVisitInput">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>460</y>
+     <width>261</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background-color: #F8F3E0;
+color: #444;
+border-radius: 10px;
+padding-left: 20px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Unesite visinu</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>570</y>
+     <width>171</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+border-radius: 20px;
+background-color: #017F36;
+font-family: Montserrat;
+font-weight: bold;
+color: #fff;
+font-size: 20px;</string>
+   </property>
+   <property name="text">
+    <string>DODAJ</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="exitButton">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>10</y>
+     <width>51</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

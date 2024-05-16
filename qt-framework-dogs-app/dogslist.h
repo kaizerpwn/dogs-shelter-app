@@ -8,6 +8,7 @@
 #include <QVBoxLayout>
 
 #include "viewdogwindow.h"
+#include "createdogmodal.h"
 
 namespace Ui {
 class DogsList;
@@ -34,12 +35,16 @@ protected:
     void addDog(const int& id, const QString& name, const QString& age, const QString& description, const QString& imagePath, QGridLayout *layout, int row, int col);
     void refetch();
 
+private slots:
+    void on_exportButton_2_clicked();
+
 private:
     Ui::DogsList *ui;
-    QWidget *dogsFrame;
-    QGridLayout *dogsLayout;
+    QWidget *dogsFrame  = nullptr;
+    CreateDogModal *dogModal = nullptr;
+    QGridLayout *dogsLayout = nullptr;
     ViewDogWindow *viewDogWindow = nullptr;
-    QWidget *m_parentWidget;
+    QWidget *m_parentWidget = nullptr;
 };
 
 #endif

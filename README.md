@@ -22,7 +22,14 @@ Desktop application for managing shelter dogs, allowing users to record and trac
 
 ## 🎨 Screenshots
 ### Main window
-![Screenshot_3](https://github.com/kaizerpwn/dogs-shelter-app/assets/70588174/e45bf161-4d7f-4c57-a1d3-7ac2f3a0310a)
+![Screenshot_4](https://github.com/kaizerpwn/dogs-shelter-app/assets/70588174/ae4670db-b223-4c84-a032-30c8b185eeb8)
+
 
 ### Dogs list window
-![Screenshot_4](https://github.com/kaizerpwn/dogs-shelter-app/assets/70588174/fd96ca7b-6d35-4ef5-aebd-7dad75492386)
+![Screenshot_5](https://github.com/kaizerpwn/dogs-shelter-app/assets/70588174/303d53f1-855b-4689-ba50-b12ff1fa7597)
+
+### Add new dog modal
+![Screenshot_6](https://github.com/kaizerpwn/dogs-shelter-app/assets/70588174/90504461-724b-473d-804e-a7ac1abd3c7b)
+
+### View & Edit dog informations
+![Screenshot_7](https://github.com/kaizerpwn/dogs-shelter-app/assets/70588174/5e4f0f40-32d7-48d6-82fe-525a687c3dab)

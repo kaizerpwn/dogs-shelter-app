@@ -25,8 +25,8 @@ public:
         QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
         db.setHostName("127.0.0.1");
         db.setUserName("root");
-        db.setPassword("");
-        db.setDatabaseName("dogs-shelter");
+        db.setPassword("rootroot");
+        db.setDatabaseName("dogs_shelter");
 
         if (db.open()) {
             qDebug() << "[DOGS-SHELTER]: Connected to database.";
